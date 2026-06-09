@@ -1,342 +1,863 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Almerio Tsany — Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 
-  <title>Almerio Portfolio</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+:root{
+  --ink:#111111;
+  --ink2:#444444;
+  --ink3:#999999;
+  --paper:#F5F4F0;
+  --paper2:#ECEAE4;
+  --red:#E63946;
+  --white:#FFFFFF;
+  --rule:rgba(17,17,17,0.1);
+  --ff-display:'Syne',sans-serif;
+  --ff-body:'DM Sans',sans-serif;
+}
 
-  <!-- Favicons -->
-  <link href="/img/logo-alm.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--paper);color:var(--ink);font-family:var(--ff-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,500,500i,600,600i,700,700i,900,900i" rel="stylesheet">
+/* SCROLLBAR */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--paper)}
+::-webkit-scrollbar-thumb{background:var(--ink)}
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+/* ─── NOISE OVERLAY ─── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:9999;opacity:0.6;
+}
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:56px;
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+}
+.nav-name{
+  font-family:var(--ff-display);font-size:0.8rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:var(--ink)
+}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links a{
+  font-family:var(--ff-body);font-size:0.72rem;font-weight:400;
+  letter-spacing:0.04em;text-transform:uppercase;color:var(--ink3);
+  text-decoration:none;padding:0 1.25rem;line-height:56px;
+  transition:color 0.2s;display:block;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-status{
+  display:flex;align-items:center;gap:8px;
+  font-family:var(--ff-body);font-size:0.68rem;letter-spacing:0.04em;
+  text-transform:uppercase;color:var(--ink3)
+}
+.nav-status-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--red);
+  animation:blink 2.5s ease infinite
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-  <!-- =======================================================
-  * Template Name: Folio
-  * Updated: Jul 27 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+/* ─── HERO ─── */
+#hero{
+  min-height:100vh;padding:56px 0 0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;
+}
+.hero-inner{padding:0 3rem 0}
+.hero-label{
+  font-family:var(--ff-body);font-size:0.7rem;font-weight:400;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);
+  margin-bottom:2.5rem;
+}
+.hero-name{
+  font-family:var(--ff-display);
+  font-size:clamp(5rem,13vw,13rem);
+  font-weight:800;
+  line-height:0.88;
+  letter-spacing:-0.04em;
+  color:var(--ink);
+  margin-bottom:0;
+}
+.hero-name em{
+  font-style:italic;font-weight:400;
+  color:transparent;
+  -webkit-text-stroke:1.5px var(--ink);
+}
+.hero-divider{
+  height:1px;background:var(--ink);
+  margin:2.5rem 0 0;
+  transform-origin:left;
+  transform:scaleX(0);
+  transition:transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s;
+}
+.hero-divider.loaded{transform:scaleX(1)}
+.hero-meta{
+  display:grid;grid-template-columns:1fr 1fr 1fr 1fr;
+  border-top:1px solid var(--rule);
+}
+.hero-meta-item{
+  padding:1.5rem 0;
+  border-right:1px solid var(--rule);
+}
+.hero-meta-item:last-child{border-right:none}
+.hero-meta-item:first-child{padding-left:0}
+.hm-label{
+  font-family:var(--ff-body);font-size:0.65rem;font-weight:400;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);
+  margin-bottom:0.4rem;
+}
+.hm-val{
+  font-family:var(--ff-display);font-size:0.95rem;font-weight:600;color:var(--ink)
+}
+.hm-val a{color:inherit;text-decoration:none}
+.hm-val a:hover{color:var(--red)}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--ink);color:var(--paper);
+  font-family:var(--ff-body);font-size:0.72rem;font-weight:500;
+  letter-spacing:0.06em;text-transform:uppercase;
+  padding:12px 24px;text-decoration:none;
+  transition:background 0.25s,color 0.25s;
+  border:none;cursor:pointer;
+}
+.hero-cta:hover{background:var(--red);color:var(--white)}
+.hero-cta-arrow{
+  width:14px;height:14px;
+  border-top:1.5px solid currentColor;
+  border-right:1.5px solid currentColor;
+  transform:rotate(45deg);
+  transition:transform 0.25s;
+}
+.hero-cta:hover .hero-cta-arrow{transform:rotate(45deg) translate(2px,-2px)}
+
+/* ─── TICKER ─── */
+.ticker{
+  overflow:hidden;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:0.85rem 0;
+  background:var(--white);
+  white-space:nowrap;
+}
+.ticker-track{
+  display:inline-flex;gap:0;
+  animation:ticker 28s linear infinite;
+}
+.ticker-track:hover{animation-play-state:paused}
+.ticker-item{
+  font-family:var(--ff-display);font-size:0.75rem;font-weight:500;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);
+  padding:0 2rem;
+}
+.ticker-item span{color:var(--red);margin-right:2rem}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ─── SECTION BASE ─── */
+section{position:relative}
+.section-header{
+  display:flex;align-items:baseline;justify-content:space-between;
+  padding:2rem 3rem 1.5rem;
+  border-bottom:1px solid var(--rule);
+}
+.section-index{
+  font-family:var(--ff-body);font-size:0.65rem;font-weight:400;
+  letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3)
+}
+.section-title{
+  font-family:var(--ff-display);font-size:0.85rem;font-weight:700;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--ink)
+}
+
+/* ─── ABOUT ─── */
+#about{background:var(--white)}
+.about-layout{
+  display:grid;grid-template-columns:1fr 1px 1.4fr;
+  min-height:500px;
+}
+.about-left{
+  padding:3rem 3rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.about-divider{background:var(--rule);width:1px}
+.about-right{padding:3rem 3rem}
+.about-headline{
+  font-family:var(--ff-display);font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:700;line-height:1.05;letter-spacing:-0.03em;
+  margin-bottom:2rem;
+}
+.about-headline em{font-style:italic;font-weight:400;color:var(--red)}
+.about-body{
+  font-size:0.95rem;color:var(--ink2);line-height:1.85;font-weight:300;
+  margin-bottom:1.5rem;
+}
+.about-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.tag{
+  font-family:var(--ff-body);font-size:0.65rem;font-weight:500;
+  letter-spacing:0.06em;text-transform:uppercase;
+  padding:5px 12px;border:1px solid var(--rule);color:var(--ink2);
+  transition:all 0.2s;cursor:default;
+}
+.tag:hover{border-color:var(--ink);color:var(--ink)}
+.about-numbers{
+  display:flex;flex-direction:column;gap:0;
+  border-top:1px solid var(--rule);margin-top:2rem;
+}
+.about-num-row{
+  display:flex;align-items:baseline;gap:1rem;
+  padding:1.2rem 0;border-bottom:1px solid var(--rule);
+}
+.about-num-row:last-child{border-bottom:none}
+.an-num{
+  font-family:var(--ff-display);font-size:2.8rem;font-weight:800;
+  color:var(--ink);line-height:1;min-width:80px;
+}
+.an-desc{font-size:0.8rem;color:var(--ink3);line-height:1.5;font-weight:300}
+.image-placeholder{
+  width:100%;aspect-ratio:3/4;
+  background:var(--paper2);
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.image-placeholder img{width:100%;height:100%;object-fit:cover}
+.image-label{
+  margin-top:1rem;
+  font-family:var(--ff-body);font-size:0.65rem;font-weight:400;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3)
+}
+
+/* ─── SERVICES ─── */
+#services{background:var(--paper)}
+.services-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-left:1px solid var(--rule);
+}
+.service-item{
+  padding:3rem 2.5rem 2.5rem;
+  border-right:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  position:relative;overflow:hidden;
+  transition:background 0.3s;
+}
+.service-item:hover{background:var(--white)}
+.service-item::after{
+  content:'';
+  position:absolute;bottom:0;left:0;
+  height:2px;width:0;background:var(--red);
+  transition:width 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.service-item:hover::after{width:100%}
+.si-letter{
+  font-family:var(--ff-display);font-size:5rem;font-weight:800;
+  color:rgba(17,17,17,0.04);line-height:1;
+  position:absolute;top:1rem;right:1.5rem;
+  letter-spacing:-0.05em;
+  transition:color 0.3s;
+}
+.service-item:hover .si-letter{color:rgba(230,57,70,0.06)}
+.si-title{
+  font-family:var(--ff-display);font-size:1.15rem;font-weight:700;
+  letter-spacing:-0.02em;margin-bottom:1rem;color:var(--ink)
+}
+.si-body{
+  font-size:0.85rem;color:var(--ink3);line-height:1.8;font-weight:300
+}
+.si-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:1.5rem;
+  font-family:var(--ff-body);font-size:0.68rem;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);
+  opacity:0;transform:translateY(4px);
+  transition:all 0.3s;
+}
+.service-item:hover .si-cta{opacity:1;transform:translateY(0);color:var(--red)}
+
+/* ─── PORTFOLIO ─── */
+#portfolio{background:var(--white)}
+.pf-filter-bar{
+  display:flex;align-items:center;gap:0;
+  padding:0 3rem;border-bottom:1px solid var(--rule);
+  overflow-x:auto;
+}
+.pf-filter{
+  font-family:var(--ff-body);font-size:0.68rem;font-weight:400;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);
+  padding:1rem 1.5rem;cursor:pointer;border-bottom:2px solid transparent;
+  transition:all 0.2s;white-space:nowrap;
+  margin-bottom:-1px;
+}
+.pf-filter:hover{color:var(--ink)}
+.pf-filter.active{color:var(--ink);border-bottom-color:var(--red)}
+.pf-table{width:100%;border-collapse:collapse}
+.pf-table tr{
+  border-bottom:1px solid var(--rule);
+  cursor:pointer;transition:background 0.2s;
+}
+.pf-table tr:hover{background:var(--paper)}
+.pf-table thead tr{background:var(--paper);cursor:default}
+.pf-table thead tr:hover{background:var(--paper)}
+.pf-table th{
+  font-family:var(--ff-body);font-size:0.62rem;font-weight:400;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);
+  padding:0.9rem 1.5rem;text-align:left;
+}
+.pf-table th:first-child{padding-left:3rem}
+.pf-table td{padding:1.5rem 1.5rem;vertical-align:middle}
+.pf-table td:first-child{padding-left:3rem}
+.pf-table td:last-child{padding-right:3rem}
+.pf-num{
+  font-family:var(--ff-display);font-size:0.72rem;font-weight:600;
+  color:var(--ink3);
+}
+.pf-name{
+  font-family:var(--ff-display);font-size:1rem;font-weight:600;
+  color:var(--ink);letter-spacing:-0.01em;
+}
+.pf-sub{
+  font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);
+  margin-top:3px;font-weight:300;
+}
+.pf-cat{
+  display:inline-block;
+  font-family:var(--ff-body);font-size:0.6rem;font-weight:500;
+  letter-spacing:0.1em;text-transform:uppercase;
+  padding:4px 10px;border:1px solid var(--rule);color:var(--ink3);
+}
+.pf-stack{
+  font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);font-weight:300
+}
+.pf-arrow{
+  width:28px;height:28px;border:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:center;
+  margin-left:auto;
+  transition:all 0.2s;
+}
+.pf-arrow-icon{
+  width:10px;height:10px;
+  border-top:1.5px solid var(--ink3);
+  border-right:1.5px solid var(--ink3);
+  transform:rotate(45deg);
+  transition:border-color 0.2s;
+}
+tr:hover .pf-arrow{border-color:var(--ink);background:var(--ink)}
+tr:hover .pf-arrow-icon{border-color:var(--paper)}
+tr[style*="none"]{display:none}
+
+.pf-year{
+  font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);font-weight:300
+}
+.pf-th-year{}
+#contact{background:var(--paper)}
+.contact-layout{
+  display:grid;grid-template-columns:1fr 1px 1fr;
+}
+.contact-left{padding:4rem 3rem}
+.contact-divider{background:var(--rule)}
+.contact-right{padding:4rem 3rem}
+.contact-big{
+  font-family:var(--ff-display);font-size:clamp(2.5rem,6vw,5rem);
+  font-weight:800;line-height:0.95;letter-spacing:-0.04em;
+  color:var(--ink);margin-bottom:3rem;
+}
+.contact-big em{font-style:italic;font-weight:400;color:var(--red)}
+.contact-info{display:flex;flex-direction:column;gap:0}
+.ci-row{
+  display:flex;align-items:baseline;gap:2rem;
+  padding:1.1rem 0;border-bottom:1px solid var(--rule);
+}
+.ci-row:first-child{border-top:1px solid var(--rule)}
+.ci-label{
+  font-family:var(--ff-body);font-size:0.62rem;font-weight:400;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);
+  min-width:80px;flex-shrink:0;
+}
+.ci-val{
+  font-family:var(--ff-display);font-size:0.9rem;font-weight:500;
+  color:var(--ink);
+}
+.ci-val a{color:inherit;text-decoration:none}
+.ci-val a:hover{color:var(--red)}
+.contact-socials{
+  display:flex;gap:8px;margin-top:2.5rem;flex-wrap:wrap;
+}
+.soc{
+  font-family:var(--ff-body);font-size:0.65rem;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:9px 16px;border:1px solid var(--rule);color:var(--ink3);
+  text-decoration:none;transition:all 0.2s;
+}
+.soc:hover{border-color:var(--ink);color:var(--ink)}
+/* FORM */
+.cf{display:flex;flex-direction:column;gap:1.25rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg label{
+  font-family:var(--ff-body);font-size:0.62rem;font-weight:400;
+  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);
+}
+.fg input,.fg textarea{
+  background:transparent;
+  border:none;border-bottom:1px solid var(--rule);
+  padding:10px 0;color:var(--ink);
+  font-family:var(--ff-body);font-size:0.9rem;font-weight:300;
+  outline:none;transition:border-color 0.2s;resize:none;width:100%;
+}
+.fg input:focus,.fg textarea:focus{border-bottom-color:var(--ink)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--ink3)}
+.fg textarea{min-height:120px}
+.cf-btn{
+  align-self:flex-start;margin-top:0.5rem;
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--ink);color:var(--paper);
+  font-family:var(--ff-body);font-size:0.72rem;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:13px 28px;border:none;cursor:pointer;
+  transition:background 0.25s;
+}
+.cf-btn:hover{background:var(--red)}
+
+/* ─── FOOTER ─── */
+footer{
+  border-top:1px solid var(--rule);
+  padding:1.5rem 3rem;
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--white);
+}
+.f-name{
+  font-family:var(--ff-display);font-size:0.78rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--ink)
+}
+footer p{
+  font-family:var(--ff-body);font-size:0.68rem;color:var(--ink3);font-weight:300
+}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.in{opacity:1;transform:none}
+.reveal-l{opacity:0;transform:translateX(-24px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal-l.in{opacity:1;transform:none}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:960px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .hero-inner{padding:0 1.5rem 0}
+  .hero-name{font-size:clamp(3.5rem,16vw,7rem)}
+  .hero-meta{grid-template-columns:1fr 1fr}
+  .hero-meta-item{border-right:none;border-bottom:1px solid var(--rule)}
+  .hero-meta-item:nth-child(odd){border-right:1px solid var(--rule)}
+  .section-header{padding:1.5rem}
+  .about-layout{grid-template-columns:1fr}
+  .about-divider{display:none}
+  .about-left,.about-right{padding:2rem 1.5rem}
+  .services-grid{grid-template-columns:1fr}
+  .services-grid{border-left:none}
+  .pf-filter-bar{padding:0 1.5rem}
+  .pf-table th:first-child,.pf-table td:first-child{padding-left:1.5rem}
+  .pf-table td:last-child{padding-right:1.5rem}
+  .contact-layout{grid-template-columns:1fr}
+  .contact-divider{display:none}
+  .contact-left,.contact-right{padding:2.5rem 1.5rem}
+  .cf-row{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:0.75rem;padding:1.5rem;text-align:center}
+  .ticker-item{font-size:0.65rem}
+}
+@media(max-width:600px){
+  .hero-meta{grid-template-columns:1fr}
+  .hero-meta-item{border-right:none!important}
+  .pf-table .hide-mobile{display:none}
+}
+</style>
 </head>
-
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top ">
-    <div class="container d-flex align-items-center justify-content-between">
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">Almerio.dev</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-status">
+    <span class="nav-status-dot"></span>
+    Available
+  </div>
+</nav>
 
-      <a href="index.html" class="logo"><h1>Alm.</h1></a>
-      <!-- Uncomment below if you prefer to use an text logo -->
-      <!-- <h1 class="logo"><a href="index.html">Folio</a></h1> -->
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link  scrollto" href="#portfolio">Portfolio</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <div id="hero" class="home">
-
-    <div class="container">
-      <div class="hero-content">
-        <h1>I'm <span class="typed" data-typed-items="Almerio Tsany, Web Developer, Software Engineer, Flutter Developer"></span></h1>
-        <p>Web Developer, Software Engineer, Flutter Developer</p>
-
-        <ul class="list-unstyled list-social">
-          <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-          <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-          <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-          <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-        </ul>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <p class="hero-label">Full Stack Developer &amp; UI/UX Designer — Bekasi, Indonesia</p>
+    <h1 class="hero-name">
+      Almerio<br>
+      <em>Tsany.</em>
+    </h1>
+    <div class="hero-divider" id="hero-divider"></div>
+    <div class="hero-meta">
+      <div class="hero-meta-item" style="padding-left:0">
+        <p class="hm-label">Specialty</p>
+        <p class="hm-val">Fullstack + Mobile</p>
+      </div>
+      <div class="hero-meta-item" style="padding-left:2rem">
+        <p class="hm-label">Stack</p>
+        <p class="hm-val">Flutter · Laravel · PHP</p>
+      </div>
+      <div class="hero-meta-item" style="padding-left:2rem">
+        <p class="hm-label">Experience</p>
+        <p class="hm-val">2+ Years</p>
+      </div>
+      <div class="hero-meta-item" style="padding-left:2rem;display:flex;flex-direction:column;justify-content:center">
+        <a href="#contact" class="hero-cta">
+          Let's work together
+          <span class="hero-cta-arrow"></span>
+        </a>
       </div>
     </div>
-  </div><!-- End Hero -->
+  </div>
+</section>
 
-  <main id="main">
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item">HTML / CSS</span>
+    <span class="ticker-item"><span>◆</span>PHP</span>
+    <span class="ticker-item"><span>◆</span>Laravel</span>
+    <span class="ticker-item"><span>◆</span>CodeIgniter 4</span>
+    <span class="ticker-item"><span>◆</span>Flutter</span>
+    <span class="ticker-item"><span>◆</span>Dart</span>
+    <span class="ticker-item"><span>◆</span>UI / UX Design</span>
+    <span class="ticker-item"><span>◆</span>Bootstrap</span>
+    <span class="ticker-item"><span>◆</span>REST API</span>
+    <span class="ticker-item"><span>◆</span>Git</span>
+    <span class="ticker-item"><span>◆</span>MySQL</span>
+    <span class="ticker-item"><span>◆</span>Figma</span>
+    <span class="ticker-item"><span>◆</span>HTML / CSS</span>
+    <span class="ticker-item"><span>◆</span>PHP</span>
+    <span class="ticker-item"><span>◆</span>Laravel</span>
+    <span class="ticker-item"><span>◆</span>CodeIgniter 4</span>
+    <span class="ticker-item"><span>◆</span>Flutter</span>
+    <span class="ticker-item"><span>◆</span>Dart</span>
+    <span class="ticker-item"><span>◆</span>UI / UX Design</span>
+    <span class="ticker-item"><span>◆</span>Bootstrap</span>
+    <span class="ticker-item"><span>◆</span>REST API</span>
+    <span class="ticker-item"><span>◆</span>Git</span>
+    <span class="ticker-item"><span>◆</span>MySQL</span>
+    <span class="ticker-item"><span>◆</span>Figma</span>
+  </div>
+</div>
 
-    <!-- ======= About Section ======= -->
-    <div id="about" class="paddsection">
-      <div class="container">
-        <div class="row justify-content-between">
-
-          <div class="col-lg-4 ">
-            <div class="div-img-bg">
-              <div class="about-img">
-                <img src="img/bg-about.jpg" class="img-responsive" alt="me">
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-7">
-            <div class="about-descr">
-
-              <p class="p-heading">I am a Programmer with knowledge of
-                programming like HTML, CSS, PHP, Laravel, Bootsrap, Kotlin, Flutter. I am
-                also experienced in IDN Boarding School Jonggol be a
-                student. </p>
-              <p class="separator">The purpose of this portfolio is to bring together my experience and professionalism. In this portfolio, you'll find examples of professional and academic work that crystallized an important part of my development as a professional dealing programmer.</p>
-
-            </div>
-
-          </div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-index">01 / 04</span>
+    <span class="section-title">About</span>
+  </div>
+  <div class="about-layout">
+    <div class="about-left reveal-l">
+      <div>
+        <h2 class="about-headline">Passionate<br>about <em>craft</em><br>&amp; detail.</h2>
+        <p class="about-body">Full Stack Developer specializing in Mobile Development and UI/UX Design. I work at the intersection of engineering and aesthetics — building scalable applications with intuitive interfaces.</p>
+        <p class="about-body">This portfolio reflects my academic, personal, and professional journey — a commitment to continuous growth and innovation.</p>
+      </div>
+      <div class="about-numbers">
+        <div class="about-num-row">
+          <span class="an-num count-up" data-target="6">0</span>
+          <span class="an-desc">Projects<br>completed</span>
+        </div>
+        <div class="about-num-row">
+          <span class="an-num count-up" data-target="3">0</span>
+          <span class="an-desc">Core<br>services</span>
+        </div>
+        <div class="about-num-row">
+          <span class="an-num count-up" data-target="2">0</span>
+          <span class="an-desc">Years of<br>experience</span>
         </div>
       </div>
-    </div><!-- End About Section -->
-
-    <!-- ======= Services Section ======= -->
-    <div id="services">
-      <div class="container">
-
-        <div class="services-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-briefcase"></i>
-                <span>UI/UX DESIGN</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-bar-chart"></i>
-                <span>WEB DESIGN</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="services-block">
-                <i class="bi bi-binoculars"></i>
-                <span>MOBILE APPS</span>
-                <p class="separator">To an English person, it will seem like simplified English,told me what </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
+      <div class="about-tags" style="margin-top:2rem">
+        <span class="tag">HTML / CSS</span>
+        <span class="tag">PHP</span>
+        <span class="tag">Laravel</span>
+        <span class="tag">Bootstrap</span>
+        <span class="tag">CodeIgniter 4</span>
+        <span class="tag">Flutter</span>
+        <span class="tag">Dart</span>
+        <span class="tag">UI Design</span>
+        <span class="tag">UX Design</span>
+        <span class="tag">Prototyping</span>
+        <span class="tag">REST API</span>
+        <span class="tag">Git</span>
       </div>
-
-    </div><!-- End Services Section -->
-
-    <!-- ======= Portfolio Section ======= -->
-    <div id="portfolio" class="paddsection">
-
-      <div class="container">
-        <div class="section-title text-center">
-          <h2>My Portfolio</h2>
-        </div>
-      </div>
-
-      <div class="container">
-
-        <div class="row">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Certificate</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row portfolio-container">
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="/img/MockUp.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Reado App with Google Book API (Kotlin)</h4>
-              <p>App</p>
-              <a href="/img/MockUp.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Reado App with Google Book API (Kotlin)"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="/img/web-1.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Website Arsedu IT Fest 2022</h4>
-              <p>Web</p>
-              <a href="/img/web-1.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Website Arsedu IT Fest 2022"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-            <img src="/img/Slide JM.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Jual Murah App with CRUD Laravel PHP (Flutter)</h4>
-              <p>App</p>
-              <a href="/img/Slide JM.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Jual Murah App with CRUD Laravel PHP (Flutter)"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="/img/cert-1.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Certificate Dicoding Pemrograman Dasar Web</h4>
-              <p>Certificate</p>
-              <a href="/img/cert-1.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Certificate Dicoding Pemrograman Dasar Web"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <img src="/img/cert-2.png" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Certificate Dicoding Pemrograman SOLID</h4>
-              <p>Certificate</p>
-              <a href="/img/cert-2.png" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Certificate Dicoding Pemrograman SOLID"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div><!-- End Portfolio Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <div id="contact" class="paddsection">
-      <div class="container">
-        <div class="contact-block1">
-          <div class="row">
-
-            <div class="col-lg-6">
-              <div class="contact-contact">
-
-                <h2 class="mb-30">GET IN TOUCH</h2>
-
-                <ul class="contact-details">
-                  <li><span>Perum Telaga Harapan, Blok D2/32</span></li>
-                  <li><span>Cikarang Barat, Bekasi, Jawa Barat</span></li>
-                  <li><span>+62 895360324416</span></li>
-                  <li><span>almerio.tsany@gmail.com</span></li>
-                </ul>
-
-              </div>
-            </div>
-
-            <div class="col-lg-6">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                <div class="row gy-3">
-
-                  <div class="col-lg-6">
-                    <div class="form-group contact-block1">
-                      <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6">
-                    <div class="form-group">
-                      <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="form-group">
-                      <textarea class="form-control" name="message" placeholder="Message" required></textarea>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-12">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                  </div>
-
-                  <div class="mt-0">
-                    <input type="submit" class="btn btn-defeault btn-send" value="Send message">
-                  </div>
-
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <div id="footer" class="text-center">
-    <div class="container">
-      <div class="socials-media text-center">
-
-        <ul class="list-unstyled">
-          <li><a href="#"><i class="bi bi-facebook"></i></a></li>
-          <li><a href="#"><i class="bi bi-twitter"></i></a></li>
-          <li><a href="#"><i class="bi bi-instagram"></i></a></li>
-          <li><a href="#"><i class="bi bi-linkedin"></i></a></li>
-        </ul>
-
-      </div>
-
-      <p>&copy; Copyrights Folio. All rights reserved.</p>
-
-      <div class="credits">
-        <!--
-        All the links in the footer should remain intact.
-        You can delete the links only if you purchased the pro version.
-        Licensing information: https://bootstrapmade.com/license/
-        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Folio
-      -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-
     </div>
-  </div><!-- End Footer -->
+    <div class="about-divider"></div>
+    <div class="about-right reveal">
+      <div class="image-placeholder">
+        <img src="./img/bg-about.jpg" alt="Almerio Tsany"
+          onerror="this.style.display='none';this.parentNode.style.alignItems='flex-end';this.parentNode.style.justifyContent='flex-start';this.parentNode.style.padding='2rem';this.parentNode.innerHTML='<span style=\'font-family:var(--ff-display);font-size:6rem;font-weight:800;color:rgba(17,17,17,0.06);line-height:1;letter-spacing:-0.04em\'>AT</span>'">
+      </div>
+      <p class="image-label">Almerio Tsany Fauzan S. — Full Stack Developer</p>
+    </div>
+  </div>
+</section>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <span class="section-index">02 / 04</span>
+    <span class="section-title">Services</span>
+  </div>
+  <div class="services-grid">
+    <div class="service-item reveal">
+      <span class="si-letter">A</span>
+      <h3 class="si-title">UI / UX Design</h3>
+      <p class="si-body">Crafting intuitive, visually engaging interfaces with a focus on user experience. From wireframes to polished, tested prototypes in Figma.</p>
+      <div class="si-cta">View work →</div>
+    </div>
+    <div class="service-item reveal" style="transition-delay:0.1s">
+      <span class="si-letter">B</span>
+      <h3 class="si-title">Web Design &amp; Dev</h3>
+      <p class="si-body">Building responsive, performant websites using modern frameworks. Clean frontend and reliable backend — end-to-end development.</p>
+      <div class="si-cta">View work →</div>
+    </div>
+    <div class="service-item reveal" style="transition-delay:0.2s">
+      <span class="si-letter">C</span>
+      <h3 class="si-title">Mobile Apps</h3>
+      <p class="si-body">Cross-platform mobile applications with Flutter. Native-feeling UX across iOS and Android from a single, maintainable codebase.</p>
+      <div class="si-cta">View work →</div>
+    </div>
+  </div>
+</section>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header">
+    <span class="section-index">03 / 04</span>
+    <span class="section-title">Selected Work</span>
+  </div>
+  <div class="pf-filter-bar">
+    <span class="pf-filter active" data-filter="all">All</span>
+    <span class="pf-filter" data-filter="app">App</span>
+    <span class="pf-filter" data-filter="web">Web</span>
+    <span class="pf-filter" data-filter="design">UI/UX</span>
+    <span class="pf-filter" data-filter="internship">Internship</span>
+  </div>
+  <table class="pf-table">
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Project</th>
+        <th class="hide-mobile">Type</th>
+        <th class="hide-mobile">Stack</th>
+        <th class="hide-mobile pf-th-year">Year</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="pf-row reveal" data-category="app">
+        <td><span class="pf-num">01</span></td>
+        <td>
+          <div class="pf-name">Circlo</div>
+          <div class="pf-sub">Social Community App — Personal Project</div>
+        </td>
+        <td class="hide-mobile"><span class="pf-cat">App</span></td>
+        <td class="hide-mobile"><span class="pf-stack">Flutter · Real-time · Community Features</span></td>
+        <td class="hide-mobile"><span class="pf-year">2026</span></td>
+        <td><div class="pf-arrow"><div class="pf-arrow-icon"></div></div></td>
+      </tr>
+      <tr class="pf-row reveal" data-category="app" style="transition-delay:0.05s">
+        <td><span class="pf-num">02</span></td>
+        <td>
+          <div class="pf-name">MoviZone</div>
+          <div class="pf-sub">Movie Catalog App — CCIT Project</div>
+        </td>
+        <td class="hide-mobile"><span class="pf-cat">App</span></td>
+        <td class="hide-mobile"><span class="pf-stack">Flutter · TMDB API · PHP · MySQL</span></td>
+        <td class="hide-mobile"><span class="pf-year">2026</span></td>
+        <td><div class="pf-arrow"><div class="pf-arrow-icon"></div></div></td>
+      </tr>
+      <tr class="pf-row reveal" data-category="web" style="transition-delay:0.08s">
+        <td><span class="pf-num">03</span></td>
+        <td>
+          <div class="pf-name">MONO</div>
+          <div class="pf-sub">Fashion E-Commerce Website — CCIT Project</div>
+        </td>
+        <td class="hide-mobile"><span class="pf-cat">Web</span></td>
+        <td class="hide-mobile"><span class="pf-stack">CodeIgniter 4 · PHP · MySQL · MVC</span></td>
+        <td class="hide-mobile"><span class="pf-year">2026</span></td>
+        <td><div class="pf-arrow"><div class="pf-arrow-icon"></div></div></td>
+      </tr>
+      <tr class="pf-row reveal" data-category="web" style="transition-delay:0.11s">
+        <td><span class="pf-num">04</span></td>
+        <td>
+          <div class="pf-name">STYLEZONE</div>
+          <div class="pf-sub">Fashion E-Commerce Website — CCIT Project</div>
+        </td>
+        <td class="hide-mobile"><span class="pf-cat">Web</span></td>
+        <td class="hide-mobile"><span class="pf-stack">PHP · MySQL · CRUD</span></td>
+        <td class="hide-mobile"><span class="pf-year">2025</span></td>
+        <td><div class="pf-arrow"><div class="pf-arrow-icon"></div></div></td>
+      </tr>
+      <tr class="pf-row reveal" data-category="design" style="transition-delay:0.14s">
+        <td><span class="pf-num">05</span></td>
+        <td>
+          <div class="pf-name">Bite&amp;Brew</div>
+          <div class="pf-sub">Recipe App UI/UX Design — CCIT Project</div>
+        </td>
+        <td class="hide-mobile"><span class="pf-cat">UI/UX</span></td>
+        <td class="hide-mobile"><span class="pf-stack">Figma · Wireframe · Prototype · High-Fidelity</span></td>
+        <td class="hide-mobile"><span class="pf-year">2025</span></td>
+        <td><div class="pf-arrow"><div class="pf-arrow-icon"></div></div></td>
+      </tr>
+      <tr class="pf-row reveal" data-category="internship" style="transition-delay:0.17s">
+        <td><span class="pf-num">06</span></td>
+        <td>
+          <div class="pf-name">PT NexWave</div>
+          <div class="pf-sub">Mobile Developer Internship</div>
+        </td>
+        <td class="hide-mobile"><span class="pf-cat">Internship</span></td>
+        <td class="hide-mobile"><span class="pf-stack">Flutter · REST API · Cross-platform</span></td>
+        <td class="hide-mobile"><span class="pf-year">2023–24</span></td>
+        <td><div class="pf-arrow"><div class="pf-arrow-icon"></div></div></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-index">04 / 04</span>
+    <span class="section-title">Contact</span>
+  </div>
+  <div class="contact-layout">
+    <div class="contact-left reveal-l">
+      <h2 class="contact-big">Let's<br>build<br>something<br><em>great.</em></h2>
+      <div class="contact-info">
+        <div class="ci-row">
+          <span class="ci-label">Location</span>
+          <span class="ci-val">Cikarang Barat, Bekasi</span>
+        </div>
+        <div class="ci-row">
+          <span class="ci-label">Phone</span>
+          <span class="ci-val"><a href="tel:+62895360324416">+62 895 3603 24416</a></span>
+        </div>
+        <div class="ci-row">
+          <span class="ci-label">Email</span>
+          <span class="ci-val"><a href="mailto:almerio.tsany@gmail.com">almerio.tsany@gmail.com</a></span>
+        </div>
+      </div>
+      <div class="contact-socials">
+        <a href="https://github.com/almeriotsaa" class="soc" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/almerio-tsany-fauzan-setiawan-8400a621a/" class="soc" target="_blank">LinkedIn</a>
+        <a href="https://instagram.com/almeriotsaa_" class="soc" target="_blank">Instagram</a>
+        <a href="mailto:almerio.tsany@gmail.com" class="soc">Email</a>
+      </div>
+    </div>
+    <div class="contact-divider"></div>
+    <div class="contact-right reveal">
+      <form class="cf" action="forms/contact.php" method="post">
+        <div class="cf-row">
+          <div class="fg">
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Your name" required>
+          </div>
+          <div class="fg">
+            <label>Email</label>
+            <input type="email" name="email" placeholder="example@gmail.com" required>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Subject</label>
+          <input type="text" name="subject" placeholder="What's it about?" required>
+        </div>
+        <div class="fg">
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+        </div>
+        <button type="submit" class="cf-btn">
+          Send message
+          <span style="display:inline-block;width:12px;height:12px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg)"></span>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
 
+<footer>
+  <span class="f-name">Almerio Tsany</span>
+  <p>© 2024 All rights reserved.</p>
+  <p>Jakarta, Indonesia</p>
+</footer>
+
+<script>
+/* HERO LINE */
+window.addEventListener('load',()=>{
+  document.getElementById('hero-divider').classList.add('loaded');
+});
+
+/* SCROLL REVEAL */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('in');
+      if(e.target.hasAttribute('data-target'))countUp(e.target);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-l,.count-up').forEach(el=>obs.observe(el));
+
+/* COUNT UP */
+function countUp(el){
+  const target=+el.dataset.target;
+  let cur=0;
+  const step=target/36;
+  const t=setInterval(()=>{
+    cur+=step;
+    if(cur>=target){cur=target;clearInterval(t)}
+    el.textContent=Math.ceil(cur)+'+';
+  },40);
+}
+
+/* PORTFOLIO FILTER */
+document.querySelectorAll('.pf-filter').forEach(f=>{
+  f.addEventListener('click',()=>{
+    document.querySelectorAll('.pf-filter').forEach(x=>x.classList.remove('active'));
+    f.classList.add('active');
+    const val=f.dataset.filter;
+    document.querySelectorAll('.pf-row').forEach(r=>{
+      if(val==='all'||r.dataset.category===val){
+        r.style.display='';
+      } else {
+        r.style.display='none';
+      }
+    });
+  });
+});
+
+/* NAV SCROLL HIGHLIGHT */
+const secs=document.querySelectorAll('section[id]');
+const nls=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id});
+  nls.forEach(a=>{
+    const target=a.getAttribute('href').replace('#','');
+    a.style.color=target===cur?'var(--ink)':'';
+  });
+},{passive:true});
+</script>
 </body>
-
 </html>

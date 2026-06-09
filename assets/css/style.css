@@ -198,14 +198,14 @@ p {
   top: 0;
 }
 
-#header .logo {
+#header .logo h1 {
   font-size: 24px;
   margin: 0;
   padding: 0;
   line-height: 1;
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 1px;
-  font-family: "Playfair Display", sans-serif;
+  font-family: "Poppins", sans-serif;
   /* font-style: italic; */
 }
 
