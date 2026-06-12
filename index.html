@@ -24,12 +24,10 @@
 html{scroll-behavior:smooth;font-size:16px}
 body{background:var(--paper);color:var(--ink);font-family:var(--ff-body);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-/* SCROLLBAR */
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--paper)}
 ::-webkit-scrollbar-thumb{background:var(--ink)}
 
-/* ─── NOISE OVERLAY ─── */
 body::before{
   content:'';
   position:fixed;inset:0;
@@ -37,7 +35,6 @@ body::before{
   pointer-events:none;z-index:9999;opacity:0.6;
 }
 
-/* ─── NAV ─── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
@@ -45,573 +42,196 @@ nav{
   background:var(--paper);
   border-bottom:1px solid var(--rule);
 }
-.nav-name{
-  font-family:var(--ff-display);font-size:0.8rem;font-weight:700;
-  letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:var(--ink)
-}
+.nav-name{font-family:var(--ff-display);font-size:0.8rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;color:var(--ink)}
 .nav-links{display:flex;gap:0;list-style:none}
-.nav-links a{
-  font-family:var(--ff-body);font-size:0.72rem;font-weight:400;
-  letter-spacing:0.04em;text-transform:uppercase;color:var(--ink3);
-  text-decoration:none;padding:0 1.25rem;line-height:56px;
-  transition:color 0.2s;display:block;
-}
+.nav-links a{font-family:var(--ff-body);font-size:0.72rem;font-weight:400;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink3);text-decoration:none;padding:0 1.25rem;line-height:56px;transition:color 0.2s;display:block;}
 .nav-links a:hover{color:var(--ink)}
-.nav-status{
-  display:flex;align-items:center;gap:8px;
-  font-family:var(--ff-body);font-size:0.68rem;letter-spacing:0.04em;
-  text-transform:uppercase;color:var(--ink3)
-}
-.nav-status-dot{
-  width:7px;height:7px;border-radius:50%;
-  background:var(--red);
-  animation:blink 2.5s ease infinite
-}
+.nav-status{display:flex;align-items:center;gap:8px;font-family:var(--ff-body);font-size:0.68rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--ink3)}
+.nav-status-dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:blink 2.5s ease infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
 
-/* ─── HERO ─── */
-#hero{
-  min-height:100vh;padding:56px 0 0;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  position:relative;
-}
+#hero{min-height:100vh;padding:56px 0 0;display:flex;flex-direction:column;justify-content:flex-end;position:relative;}
 .hero-inner{padding:0 3rem 0}
-.hero-label{
-  font-family:var(--ff-body);font-size:0.7rem;font-weight:400;
-  letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);
-  margin-bottom:2.5rem;
-}
-.hero-name{
-  font-family:var(--ff-display);
-  font-size:clamp(5rem,13vw,13rem);
-  font-weight:800;
-  line-height:0.88;
-  letter-spacing:-0.04em;
-  color:var(--ink);
-  margin-bottom:0;
-}
-.hero-name em{
-  font-style:italic;font-weight:400;
-  color:transparent;
-  -webkit-text-stroke:1.5px var(--ink);
-}
-.hero-divider{
-  height:1px;background:var(--ink);
-  margin:2.5rem 0 0;
-  transform-origin:left;
-  transform:scaleX(0);
-  transition:transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s;
-}
+.hero-label{font-family:var(--ff-body);font-size:0.7rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:2.5rem;}
+.hero-name{font-family:var(--ff-display);font-size:clamp(5rem,13vw,13rem);font-weight:800;line-height:0.88;letter-spacing:-0.04em;color:var(--ink);margin-bottom:0;}
+.hero-name em{font-style:italic;font-weight:400;color:transparent;-webkit-text-stroke:1.5px var(--ink);}
+.hero-divider{height:1px;background:var(--ink);margin:2.5rem 0 0;transform-origin:left;transform:scaleX(0);transition:transform 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s;}
 .hero-divider.loaded{transform:scaleX(1)}
-.hero-meta{
-  display:grid;grid-template-columns:1fr 1fr 1fr 1fr;
-  border-top:1px solid var(--rule);
-}
-.hero-meta-item{
-  padding:1.5rem 0;
-  border-right:1px solid var(--rule);
-}
+.hero-meta{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-top:1px solid var(--rule);}
+.hero-meta-item{padding:1.5rem 0;border-right:1px solid var(--rule);}
 .hero-meta-item:last-child{border-right:none}
 .hero-meta-item:first-child{padding-left:0}
-.hm-label{
-  font-family:var(--ff-body);font-size:0.65rem;font-weight:400;
-  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);
-  margin-bottom:0.4rem;
-}
-.hm-val{
-  font-family:var(--ff-display);font-size:0.95rem;font-weight:600;color:var(--ink)
-}
+.hm-label{font-family:var(--ff-body);font-size:0.65rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.4rem;}
+.hm-val{font-family:var(--ff-display);font-size:0.95rem;font-weight:600;color:var(--ink)}
 .hm-val a{color:inherit;text-decoration:none}
 .hm-val a:hover{color:var(--red)}
-.hero-cta{
-  display:inline-flex;align-items:center;gap:10px;
-  background:var(--ink);color:var(--paper);
-  font-family:var(--ff-body);font-size:0.72rem;font-weight:500;
-  letter-spacing:0.06em;text-transform:uppercase;
-  padding:12px 24px;text-decoration:none;
-  transition:background 0.25s,color 0.25s;
-  border:none;cursor:pointer;
-}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);font-family:var(--ff-body);font-size:0.72rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:12px 24px;text-decoration:none;transition:background 0.25s,color 0.25s;border:none;cursor:pointer;}
 .hero-cta:hover{background:var(--red);color:var(--white)}
-.hero-cta-arrow{
-  width:14px;height:14px;
-  border-top:1.5px solid currentColor;
-  border-right:1.5px solid currentColor;
-  transform:rotate(45deg);
-  transition:transform 0.25s;
-}
+.hero-cta-arrow{width:14px;height:14px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg);transition:transform 0.25s;}
 .hero-cta:hover .hero-cta-arrow{transform:rotate(45deg) translate(2px,-2px)}
 
-/* ─── TICKER ─── */
-.ticker{
-  overflow:hidden;
-  border-top:1px solid var(--rule);
-  border-bottom:1px solid var(--rule);
-  padding:0.85rem 0;
-  background:var(--white);
-  white-space:nowrap;
-}
-.ticker-track{
-  display:inline-flex;gap:0;
-  animation:ticker 28s linear infinite;
-}
+.ticker{overflow:hidden;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:0.85rem 0;background:var(--white);white-space:nowrap;}
+.ticker-track{display:inline-flex;gap:0;animation:ticker 28s linear infinite;}
 .ticker-track:hover{animation-play-state:paused}
-.ticker-item{
-  font-family:var(--ff-display);font-size:0.75rem;font-weight:500;
-  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);
-  padding:0 2rem;
-}
+.ticker-item{font-family:var(--ff-display);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);padding:0 2rem;}
 .ticker-item span{color:var(--red);margin-right:2rem}
 @keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ─── SECTION BASE ─── */
 section{position:relative}
-.section-header{
-  display:flex;align-items:baseline;justify-content:space-between;
-  padding:2rem 3rem 1.5rem;
-  border-bottom:1px solid var(--rule);
-}
-.section-index{
-  font-family:var(--ff-body);font-size:0.65rem;font-weight:400;
-  letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3)
-}
-.section-title{
-  font-family:var(--ff-display);font-size:0.85rem;font-weight:700;
-  letter-spacing:0.1em;text-transform:uppercase;color:var(--ink)
-}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;padding:2rem 3rem 1.5rem;border-bottom:1px solid var(--rule);}
+.section-index{font-family:var(--ff-body);font-size:0.65rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3)}
+.section-title{font-family:var(--ff-display);font-size:0.85rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink)}
 
-/* ─── ABOUT ─── */
 #about{background:var(--white)}
-.about-layout{
-  display:grid;grid-template-columns:1fr 1px 1.4fr;
-  min-height:500px;
-}
-.about-left{
-  padding:3rem 3rem;
-  display:flex;flex-direction:column;justify-content:space-between;
-}
+.about-layout{display:grid;grid-template-columns:1fr 1px 1.4fr;min-height:500px;}
+.about-left{padding:3rem 3rem;display:flex;flex-direction:column;justify-content:space-between;}
 .about-divider{background:var(--rule);width:1px}
 .about-right{padding:3rem 3rem}
-.about-headline{
-  font-family:var(--ff-display);font-size:clamp(1.8rem,4vw,3rem);
-  font-weight:700;line-height:1.05;letter-spacing:-0.03em;
-  margin-bottom:2rem;
-}
+.about-headline{font-family:var(--ff-display);font-size:clamp(1.8rem,4vw,3rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:2rem;}
 .about-headline em{font-style:italic;font-weight:400;color:var(--red)}
-.about-body{
-  font-size:0.95rem;color:var(--ink2);line-height:1.85;font-weight:300;
-  margin-bottom:1.5rem;
-}
+.about-body{font-size:0.95rem;color:var(--ink2);line-height:1.85;font-weight:300;margin-bottom:1.5rem;}
 .about-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.tag{
-  font-family:var(--ff-body);font-size:0.65rem;font-weight:500;
-  letter-spacing:0.06em;text-transform:uppercase;
-  padding:5px 12px;border:1px solid var(--rule);color:var(--ink2);
-  transition:all 0.2s;cursor:default;
-}
+.tag{font-family:var(--ff-body);font-size:0.65rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--rule);color:var(--ink2);transition:all 0.2s;cursor:default;}
 .tag:hover{border-color:var(--ink);color:var(--ink)}
-.about-numbers{
-  display:flex;flex-direction:column;gap:0;
-  border-top:1px solid var(--rule);margin-top:2rem;
-}
-.about-num-row{
-  display:flex;align-items:baseline;gap:1rem;
-  padding:1.2rem 0;border-bottom:1px solid var(--rule);
-}
+.about-numbers{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--rule);margin-top:2rem;}
+.about-num-row{display:flex;align-items:baseline;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--rule);}
 .about-num-row:last-child{border-bottom:none}
-.an-num{
-  font-family:var(--ff-display);font-size:2.8rem;font-weight:800;
-  color:var(--ink);line-height:1;min-width:80px;
-}
+.an-num{font-family:var(--ff-display);font-size:2.8rem;font-weight:800;color:var(--ink);line-height:1;min-width:80px;}
 .an-desc{font-size:0.8rem;color:var(--ink3);line-height:1.5;font-weight:300}
-.image-placeholder{
-  width:100%;aspect-ratio:3/4;
-  background:var(--paper2);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
+.image-placeholder{width:100%;aspect-ratio:3/4;background:var(--paper2);display:flex;align-items:center;justify-content:center;overflow:hidden;}
 .image-placeholder img{width:100%;height:100%;object-fit:cover}
-.image-label{
-  margin-top:1rem;
-  font-family:var(--ff-body);font-size:0.65rem;font-weight:400;
-  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3)
-}
+.image-label{margin-top:1rem;font-family:var(--ff-body);font-size:0.65rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3)}
 
-/* ─── SERVICES ─── */
 #services{background:var(--paper)}
-.services-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  border-left:1px solid var(--rule);
-}
-.service-item{
-  padding:3rem 2.5rem 2.5rem;
-  border-right:1px solid var(--rule);
-  border-bottom:1px solid var(--rule);
-  position:relative;overflow:hidden;
-  transition:background 0.3s;
-}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--rule);}
+.service-item{padding:3rem 2.5rem 2.5rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);position:relative;overflow:hidden;transition:background 0.3s;}
 .service-item:hover{background:var(--white)}
-.service-item::after{
-  content:'';
-  position:absolute;bottom:0;left:0;
-  height:2px;width:0;background:var(--red);
-  transition:width 0.4s cubic-bezier(0.16,1,0.3,1);
-}
+.service-item::after{content:'';position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--red);transition:width 0.4s cubic-bezier(0.16,1,0.3,1);}
 .service-item:hover::after{width:100%}
-.si-letter{
-  font-family:var(--ff-display);font-size:5rem;font-weight:800;
-  color:rgba(17,17,17,0.04);line-height:1;
-  position:absolute;top:1rem;right:1.5rem;
-  letter-spacing:-0.05em;
-  transition:color 0.3s;
-}
+.si-letter{font-family:var(--ff-display);font-size:5rem;font-weight:800;color:rgba(17,17,17,0.04);line-height:1;position:absolute;top:1rem;right:1.5rem;letter-spacing:-0.05em;transition:color 0.3s;}
 .service-item:hover .si-letter{color:rgba(230,57,70,0.06)}
-.si-title{
-  font-family:var(--ff-display);font-size:1.15rem;font-weight:700;
-  letter-spacing:-0.02em;margin-bottom:1rem;color:var(--ink)
-}
-.si-body{
-  font-size:0.85rem;color:var(--ink3);line-height:1.8;font-weight:300
-}
-.si-cta{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:1.5rem;
-  font-family:var(--ff-body);font-size:0.68rem;font-weight:500;
-  letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);
-  opacity:0;transform:translateY(4px);
-  transition:all 0.3s;
-}
+.si-title{font-family:var(--ff-display);font-size:1.15rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:1rem;color:var(--ink)}
+.si-body{font-size:0.85rem;color:var(--ink3);line-height:1.8;font-weight:300}
+.si-cta{display:inline-flex;align-items:center;gap:6px;margin-top:1.5rem;font-family:var(--ff-body);font-size:0.68rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);opacity:0;transform:translateY(4px);transition:all 0.3s;}
 .service-item:hover .si-cta{opacity:1;transform:translateY(0);color:var(--red)}
 
-/* ─── PORTFOLIO ─── */
 #portfolio{background:var(--white)}
-.pf-filter-bar{
-  display:flex;align-items:center;gap:0;
-  padding:0 3rem;border-bottom:1px solid var(--rule);
-  overflow-x:auto;
-}
-.pf-filter{
-  font-family:var(--ff-body);font-size:0.68rem;font-weight:400;
-  letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);
-  padding:1rem 1.5rem;cursor:pointer;border-bottom:2px solid transparent;
-  transition:all 0.2s;white-space:nowrap;
-  margin-bottom:-1px;
-}
+.pf-filter-bar{display:flex;align-items:center;gap:0;padding:0 3rem;border-bottom:1px solid var(--rule);overflow-x:auto;}
+.pf-filter{font-family:var(--ff-body);font-size:0.68rem;font-weight:400;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink3);padding:1rem 1.5rem;cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;margin-bottom:-1px;}
 .pf-filter:hover{color:var(--ink)}
 .pf-filter.active{color:var(--ink);border-bottom-color:var(--red)}
 .pf-table{width:100%;border-collapse:collapse}
-.pf-table tr{
-  border-bottom:1px solid var(--rule);
-  cursor:pointer;transition:background 0.2s;
-}
+.pf-table tr{border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.2s;}
 .pf-table tr:hover{background:var(--paper)}
 .pf-table thead tr{background:var(--paper);cursor:default}
 .pf-table thead tr:hover{background:var(--paper)}
-.pf-table th{
-  font-family:var(--ff-body);font-size:0.62rem;font-weight:400;
-  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);
-  padding:0.9rem 1.5rem;text-align:left;
-}
+.pf-table th{font-family:var(--ff-body);font-size:0.62rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);padding:0.9rem 1.5rem;text-align:left;}
 .pf-table th:first-child{padding-left:3rem}
 .pf-table td{padding:1.5rem 1.5rem;vertical-align:middle}
 .pf-table td:first-child{padding-left:3rem}
 .pf-table td:last-child{padding-right:3rem}
-.pf-num{
-  font-family:var(--ff-display);font-size:0.72rem;font-weight:600;
-  color:var(--ink3);
-}
-.pf-name{
-  font-family:var(--ff-display);font-size:1rem;font-weight:600;
-  color:var(--ink);letter-spacing:-0.01em;
-}
-.pf-sub{
-  font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);
-  margin-top:3px;font-weight:300;
-}
-.pf-cat{
-  display:inline-block;
-  font-family:var(--ff-body);font-size:0.6rem;font-weight:500;
-  letter-spacing:0.1em;text-transform:uppercase;
-  padding:4px 10px;border:1px solid var(--rule);color:var(--ink3);
-}
-.pf-stack{
-  font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);font-weight:300
-}
-.pf-arrow{
-  width:28px;height:28px;border:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:center;
-  margin-left:auto;
-  transition:all 0.2s;
-}
-.pf-arrow-icon{
-  width:10px;height:10px;
-  border-top:1.5px solid var(--ink3);
-  border-right:1.5px solid var(--ink3);
-  transform:rotate(45deg);
-  transition:border-color 0.2s;
-}
+.pf-num{font-family:var(--ff-display);font-size:0.72rem;font-weight:600;color:var(--ink3);}
+.pf-name{font-family:var(--ff-display);font-size:1rem;font-weight:600;color:var(--ink);letter-spacing:-0.01em;}
+.pf-sub{font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);margin-top:3px;font-weight:300;}
+.pf-cat{display:inline-block;font-family:var(--ff-body);font-size:0.6rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:4px 10px;border:1px solid var(--rule);color:var(--ink3);}
+.pf-stack{font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);font-weight:300}
+.pf-arrow{width:28px;height:28px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;margin-left:auto;transition:all 0.2s;}
+.pf-arrow-icon{width:10px;height:10px;border-top:1.5px solid var(--ink3);border-right:1.5px solid var(--ink3);transform:rotate(45deg);transition:border-color 0.2s;}
 tr:hover .pf-arrow{border-color:var(--ink);background:var(--ink)}
 tr:hover .pf-arrow-icon{border-color:var(--paper)}
 tr[style*="none"]{display:none}
+.pf-year{font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);font-weight:300}
 
-.pf-year{
-  font-family:var(--ff-body);font-size:0.75rem;color:var(--ink3);font-weight:300
-}
-.pf-th-year{}
+/* ─── CONTACT (no form) ─── */
 #contact{background:var(--paper)}
-.contact-layout{
-  display:grid;grid-template-columns:1fr 1px 1fr;
-}
-.contact-left{padding:4rem 3rem}
-.contact-divider{background:var(--rule)}
-.contact-right{padding:4rem 3rem}
-.contact-big{
-  font-family:var(--ff-display);font-size:clamp(2.5rem,6vw,5rem);
-  font-weight:800;line-height:0.95;letter-spacing:-0.04em;
-  color:var(--ink);margin-bottom:3rem;
-}
+.contact-layout{padding:4rem 3rem;}
+.contact-big{font-family:var(--ff-display);font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:0.95;letter-spacing:-0.04em;color:var(--ink);margin-bottom:3rem;}
 .contact-big em{font-style:italic;font-weight:400;color:var(--red)}
-.contact-info{display:flex;flex-direction:column;gap:0}
-.ci-row{
-  display:flex;align-items:baseline;gap:2rem;
-  padding:1.1rem 0;border-bottom:1px solid var(--rule);
-}
+.contact-info{display:flex;flex-direction:column;gap:0;max-width:600px}
+.ci-row{display:flex;align-items:baseline;gap:2rem;padding:1.1rem 0;border-bottom:1px solid var(--rule);}
 .ci-row:first-child{border-top:1px solid var(--rule)}
-.ci-label{
-  font-family:var(--ff-body);font-size:0.62rem;font-weight:400;
-  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);
-  min-width:80px;flex-shrink:0;
-}
-.ci-val{
-  font-family:var(--ff-display);font-size:0.9rem;font-weight:500;
-  color:var(--ink);
-}
+.ci-label{font-family:var(--ff-body);font-size:0.62rem;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);min-width:80px;flex-shrink:0;}
+.ci-val{font-family:var(--ff-display);font-size:0.9rem;font-weight:500;color:var(--ink);}
 .ci-val a{color:inherit;text-decoration:none}
 .ci-val a:hover{color:var(--red)}
-.contact-socials{
-  display:flex;gap:8px;margin-top:2.5rem;flex-wrap:wrap;
-}
-.soc{
-  font-family:var(--ff-body);font-size:0.65rem;font-weight:500;
-  letter-spacing:0.08em;text-transform:uppercase;
-  padding:9px 16px;border:1px solid var(--rule);color:var(--ink3);
-  text-decoration:none;transition:all 0.2s;
-}
+.contact-socials{display:flex;gap:8px;margin-top:2.5rem;flex-wrap:wrap;}
+.soc{font-family:var(--ff-body);font-size:0.65rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:9px 16px;border:1px solid var(--rule);color:var(--ink3);text-decoration:none;transition:all 0.2s;}
 .soc:hover{border-color:var(--ink);color:var(--ink)}
-/* FORM */
-.cf{display:flex;flex-direction:column;gap:1.25rem}
-.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-.fg{display:flex;flex-direction:column;gap:6px}
-.fg label{
-  font-family:var(--ff-body);font-size:0.62rem;font-weight:400;
-  letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);
-}
-.fg input,.fg textarea{
-  background:transparent;
-  border:none;border-bottom:1px solid var(--rule);
-  padding:10px 0;color:var(--ink);
-  font-family:var(--ff-body);font-size:0.9rem;font-weight:300;
-  outline:none;transition:border-color 0.2s;resize:none;width:100%;
-}
-.fg input:focus,.fg textarea:focus{border-bottom-color:var(--ink)}
-.fg input::placeholder,.fg textarea::placeholder{color:var(--ink3)}
-.fg textarea{min-height:120px}
-.cf-btn{
-  align-self:flex-start;margin-top:0.5rem;
-  display:inline-flex;align-items:center;gap:12px;
-  background:var(--ink);color:var(--paper);
-  font-family:var(--ff-body);font-size:0.72rem;font-weight:500;
-  letter-spacing:0.08em;text-transform:uppercase;
-  padding:13px 28px;border:none;cursor:pointer;
-  transition:background 0.25s;
-}
-.cf-btn:hover{background:var(--red)}
 
-/* ─── FOOTER ─── */
-footer{
-  border-top:1px solid var(--rule);
-  padding:1.5rem 3rem;
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--white);
-}
-.f-name{
-  font-family:var(--ff-display);font-size:0.78rem;font-weight:700;
-  letter-spacing:0.08em;text-transform:uppercase;color:var(--ink)
-}
-footer p{
-  font-family:var(--ff-body);font-size:0.68rem;color:var(--ink3);font-weight:300
-}
+footer{border-top:1px solid var(--rule);padding:1.5rem 3rem;display:flex;align-items:center;justify-content:space-between;background:var(--white);}
+.f-name{font-family:var(--ff-display);font-size:0.78rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink)}
+footer p{font-family:var(--ff-body);font-size:0.68rem;color:var(--ink3);font-weight:300}
 
-/* ─── PROJECT DETAIL PANEL ─── */
-#pf-overlay{
-  position:fixed;inset:0;background:rgba(17,17,17,0);
-  z-index:200;pointer-events:none;
-  transition:background 0.4s ease;
-}
+#pf-overlay{position:fixed;inset:0;background:rgba(17,17,17,0);z-index:200;pointer-events:none;transition:background 0.4s ease;}
 #pf-overlay.open{background:rgba(17,17,17,0.45);pointer-events:all}
-#pf-panel{
-  position:fixed;top:0;right:0;bottom:0;
-  width:min(600px,100vw);
-  background:var(--white);
-  z-index:201;
-  transform:translateX(100%);
-  transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);
-  display:flex;flex-direction:column;
-  overflow:hidden;
-}
+#pf-panel{position:fixed;top:0;right:0;bottom:0;width:min(600px,100vw);background:var(--white);z-index:201;transform:translateX(100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1);display:flex;flex-direction:column;overflow:hidden;}
 #pf-panel.open{transform:translateX(0)}
-.pf-panel-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2.5rem;height:56px;
-  border-bottom:1px solid var(--rule);flex-shrink:0;
-}
-.pf-panel-close{
-  width:36px;height:36px;border:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;background:none;transition:all 0.2s;
-}
+.pf-panel-head{display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:56px;border-bottom:1px solid var(--rule);flex-shrink:0;}
+.pf-panel-close{width:36px;height:36px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;transition:all 0.2s;}
 .pf-panel-close:hover{border-color:var(--ink);background:var(--ink)}
 .pf-close-icon{position:relative;width:14px;height:14px}
-.pf-close-icon::before,.pf-close-icon::after{
-  content:'';position:absolute;top:50%;left:0;
-  width:100%;height:1.5px;background:var(--ink);transition:background 0.2s;
-}
+.pf-close-icon::before,.pf-close-icon::after{content:'';position:absolute;top:50%;left:0;width:100%;height:1.5px;background:var(--ink);transition:background 0.2s;}
 .pf-close-icon::before{transform:translateY(-50%) rotate(45deg)}
 .pf-close-icon::after{transform:translateY(-50%) rotate(-45deg)}
-.pf-panel-close:hover .pf-close-icon::before,
-.pf-panel-close:hover .pf-close-icon::after{background:var(--white)}
-.pf-panel-index{
-  font-family:var(--ff-body);font-size:0.62rem;font-weight:400;
-  letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);
-}
-.pf-panel-body{
-  flex:1;overflow-y:auto;padding:2.5rem;
-  scrollbar-width:thin;scrollbar-color:var(--paper2) transparent;
-}
+.pf-panel-close:hover .pf-close-icon::before,.pf-panel-close:hover .pf-close-icon::after{background:var(--white)}
+.pf-panel-index{font-family:var(--ff-body);font-size:0.62rem;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);}
+.pf-panel-body{flex:1;overflow-y:auto;padding:2.5rem;scrollbar-width:thin;scrollbar-color:var(--paper2) transparent;}
 .pf-panel-body::-webkit-scrollbar{width:3px}
 .pf-panel-body::-webkit-scrollbar-thumb{background:var(--paper2)}
 .pd-cat-row{display:flex;align-items:center;gap:10px;margin-bottom:1.5rem}
-.pd-badge{
-  font-family:var(--ff-body);font-size:0.6rem;font-weight:500;
-  letter-spacing:0.1em;text-transform:uppercase;
-  padding:4px 12px;border:1px solid var(--rule);color:var(--ink3);
-}
+.pd-badge{font-family:var(--ff-body);font-size:0.6rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;padding:4px 12px;border:1px solid var(--rule);color:var(--ink3);}
 .pd-badge.red{border-color:var(--red);color:var(--red)}
 .pd-year-tag{font-family:var(--ff-body);font-size:0.6rem;color:var(--ink3);font-weight:300;letter-spacing:0.06em}
-.pd-title{
-  font-family:var(--ff-display);
-  font-size:clamp(2rem,8vw,3.2rem);
-  font-weight:800;line-height:0.95;letter-spacing:-0.04em;
-  color:var(--ink);margin-bottom:0.5rem;
-}
+.pd-title{font-family:var(--ff-display);font-size:clamp(2rem,8vw,3.2rem);font-weight:800;line-height:0.95;letter-spacing:-0.04em;color:var(--ink);margin-bottom:0.5rem;}
 .pd-subtitle{font-family:var(--ff-body);font-size:0.85rem;color:var(--ink3);font-weight:300;margin-bottom:2rem}
 .pd-divider{height:1px;background:var(--rule);margin:2rem 0}
-.pd-section-label{
-  font-family:var(--ff-body);font-size:0.6rem;font-weight:500;
-  letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.75rem;
-}
+.pd-section-label{font-family:var(--ff-body);font-size:0.6rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.75rem;}
 .pd-desc{font-family:var(--ff-body);font-size:0.9rem;color:var(--ink2);line-height:1.85;font-weight:300;margin-bottom:1.5rem}
 .pd-points{list-style:none;display:flex;flex-direction:column;gap:0.75rem}
-.pd-points li{
-  font-family:var(--ff-body);font-size:0.88rem;color:var(--ink2);
-  line-height:1.7;font-weight:300;padding-left:1.25rem;position:relative;
-}
+.pd-points li{font-family:var(--ff-body);font-size:0.88rem;color:var(--ink2);line-height:1.7;font-weight:300;padding-left:1.25rem;position:relative;}
 .pd-points li::before{content:'—';position:absolute;left:0;color:var(--red);font-size:0.75rem}
 .pd-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule)}
 .pd-meta-item{padding:1.1rem 1.25rem;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .pd-meta-item:nth-child(even){border-right:none}
 .pd-meta-item:nth-last-child(-n+2){border-bottom:none}
-.pd-meta-label{
-  font-family:var(--ff-body);font-size:0.58rem;font-weight:400;
-  letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.3rem;
-}
+.pd-meta-label{font-family:var(--ff-body);font-size:0.58rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:0.3rem;}
 .pd-meta-val{font-family:var(--ff-display);font-size:0.85rem;font-weight:600;color:var(--ink)}
 .pd-stack-wrap{display:flex;flex-wrap:wrap;gap:6px}
-.pd-stack-pill{
-  font-family:var(--ff-body);font-size:0.62rem;font-weight:400;
-  letter-spacing:0.06em;text-transform:uppercase;
-  padding:5px 12px;border:1px solid var(--rule);color:var(--ink2);transition:all 0.2s;
-}
+.pd-stack-pill{font-family:var(--ff-body);font-size:0.62rem;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;padding:5px 12px;border:1px solid var(--rule);color:var(--ink2);transition:all 0.2s;}
 .pd-stack-pill:hover{border-color:var(--ink);color:var(--ink)}
-.pf-panel-foot{
-  padding:1.5rem 2.5rem;border-top:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:space-between;
-  flex-shrink:0;background:var(--paper);
-}
+.pf-panel-foot{padding:1.5rem 2.5rem;border-top:1px solid var(--rule);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:var(--paper);}
 .pd-nav{display:flex;gap:8px}
-.pd-nav-btn{
-  width:36px;height:36px;border:1px solid var(--rule);
-  display:flex;align-items:center;justify-content:center;
-  cursor:pointer;background:none;transition:all 0.2s;
-}
+.pd-nav-btn{width:36px;height:36px;border:1px solid var(--rule);display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;transition:all 0.2s;}
 .pd-nav-btn:hover{border-color:var(--ink);background:var(--ink)}
 .pd-nav-btn:hover .pd-nav-icon{border-color:var(--white)}
 .pd-nav-btn:disabled{opacity:0.3;cursor:default;pointer-events:none}
-.pd-nav-icon{
-  width:8px;height:8px;
-  border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transition:border-color 0.2s;
-}
+.pd-nav-icon{width:8px;height:8px;border-top:1.5px solid var(--ink);border-right:1.5px solid var(--ink);transition:border-color 0.2s;}
 .pd-nav-icon.left{transform:rotate(-135deg)}
 .pd-nav-icon.right{transform:rotate(45deg)}
 .pd-nav-label{font-family:var(--ff-body);font-size:0.65rem;color:var(--ink3);font-weight:300;letter-spacing:0.06em}
 
-/* ─── PANEL PHOTO GALLERY ─── */
 .pd-gallery{margin-bottom:2rem}
-.pd-gallery-main{
-  width:100%;aspect-ratio:16/9;
-  background:var(--paper2);overflow:hidden;
-  position:relative;border:1px solid var(--rule);
-  cursor:zoom-in;
-}
-.pd-gallery-main img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
-}
+.pd-gallery-main{width:100%;aspect-ratio:16/9;background:var(--paper2);overflow:hidden;position:relative;border:1px solid var(--rule);cursor:zoom-in;}
+.pd-gallery-main img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);}
 .pd-gallery-main:hover img{transform:scale(1.03)}
-.pd-placeholder-wrap{
-  width:100%;height:100%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;
-}
-.pd-placeholder-letter{
-  font-family:var(--ff-display);font-size:5rem;font-weight:800;
-  color:rgba(17,17,17,0.06);letter-spacing:-0.04em;line-height:1;
-}
-.pd-placeholder-hint{
-  font-family:var(--ff-body);font-size:0.58rem;font-weight:400;
-  letter-spacing:0.16em;text-transform:uppercase;color:var(--ink3);
-}
+.pd-placeholder-wrap{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;}
+.pd-placeholder-letter{font-family:var(--ff-display);font-size:5rem;font-weight:800;color:rgba(17,17,17,0.06);letter-spacing:-0.04em;line-height:1;}
+.pd-placeholder-hint{font-family:var(--ff-body);font-size:0.58rem;font-weight:400;letter-spacing:0.16em;text-transform:uppercase;color:var(--ink3);}
 .pd-gallery-thumbs{display:flex;gap:6px;margin-top:6px}
-.pd-thumb{
-  flex:1;min-width:0;aspect-ratio:16/9;
-  background:var(--paper2);overflow:hidden;
-  border:1px solid var(--rule);cursor:pointer;
-  transition:border-color 0.2s;position:relative;
-}
+.pd-thumb{flex:1;min-width:0;aspect-ratio:16/9;background:var(--paper2);overflow:hidden;border:1px solid var(--rule);cursor:pointer;transition:border-color 0.2s;position:relative;}
 .pd-thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .pd-thumb:hover{border-color:var(--ink3)}
 .pd-thumb.active{border-color:var(--ink)}
-.pd-thumb.active::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;
-  height:2px;background:var(--red);
-}
-.pd-gallery-caption{
-  display:flex;align-items:center;justify-content:space-between;margin-top:8px;
-}
-.pd-gallery-label{
-  font-family:var(--ff-body);font-size:0.58rem;font-weight:400;
-  letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);
-}
-.pd-gallery-count{
-  font-family:var(--ff-body);font-size:0.58rem;color:var(--ink3);font-weight:300;
-}
+.pd-thumb.active::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);}
+.pd-gallery-caption{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+.pd-gallery-label{font-family:var(--ff-body);font-size:0.58rem;font-weight:400;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink3);}
+.pd-gallery-count{font-family:var(--ff-body);font-size:0.58rem;color:var(--ink3);font-weight:300;}
 
-/* ─── REVEAL ─── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal.in{opacity:1;transform:none}
 .reveal-l{opacity:0;transform:translateX(-24px);transition:opacity 0.7s ease,transform 0.7s ease}
 .reveal-l.in{opacity:1;transform:none}
 
-/* ─── RESPONSIVE ─── */
 @media(max-width:960px){
   nav{padding:0 1.5rem}
   .nav-links{display:none}
@@ -624,15 +244,11 @@ footer p{
   .about-layout{grid-template-columns:1fr}
   .about-divider{display:none}
   .about-left,.about-right{padding:2rem 1.5rem}
-  .services-grid{grid-template-columns:1fr}
-  .services-grid{border-left:none}
+  .services-grid{grid-template-columns:1fr;border-left:none}
   .pf-filter-bar{padding:0 1.5rem}
   .pf-table th:first-child,.pf-table td:first-child{padding-left:1.5rem}
   .pf-table td:last-child{padding-right:1.5rem}
-  .contact-layout{grid-template-columns:1fr}
-  .contact-divider{display:none}
-  .contact-left,.contact-right{padding:2.5rem 1.5rem}
-  .cf-row{grid-template-columns:1fr}
+  .contact-layout{padding:2.5rem 1.5rem}
   footer{flex-direction:column;gap:0.75rem;padding:1.5rem;text-align:center}
   .ticker-item{font-size:0.65rem}
 }
@@ -645,7 +261,6 @@ footer p{
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-name">Almerio.dev</a>
   <ul class="nav-links">
@@ -660,7 +275,6 @@ footer p{
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-inner">
     <p class="hero-label">Full Stack Developer &amp; UI/UX Designer — Bekasi, Indonesia</p>
@@ -692,7 +306,6 @@ footer p{
   </div>
 </section>
 
-<!-- TICKER -->
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track">
     <span class="ticker-item">HTML / CSS</span>
@@ -722,7 +335,6 @@ footer p{
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-header">
     <span class="section-index">01 / 04</span>
@@ -775,7 +387,6 @@ footer p{
   </div>
 </section>
 
-<!-- SERVICES -->
 <section id="services">
   <div class="section-header reveal">
     <span class="section-index">02 / 04</span>
@@ -803,7 +414,6 @@ footer p{
   </div>
 </section>
 
-<!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="section-header">
     <span class="section-index">03 / 04</span>
@@ -830,10 +440,7 @@ footer p{
     <tbody>
       <tr class="pf-row reveal" data-category="app">
         <td><span class="pf-num">01</span></td>
-        <td>
-          <div class="pf-name">Circlo</div>
-          <div class="pf-sub">Social Community App — Personal Project</div>
-        </td>
+        <td><div class="pf-name">Circlo</div><div class="pf-sub">Social Community App — Personal Project</div></td>
         <td class="hide-mobile"><span class="pf-cat">App</span></td>
         <td class="hide-mobile"><span class="pf-stack">Flutter · Real-time · Community Features</span></td>
         <td class="hide-mobile"><span class="pf-year">2026</span></td>
@@ -841,10 +448,7 @@ footer p{
       </tr>
       <tr class="pf-row reveal" data-category="app" style="transition-delay:0.05s">
         <td><span class="pf-num">02</span></td>
-        <td>
-          <div class="pf-name">MoviZone</div>
-          <div class="pf-sub">Movie Catalog App — CCIT Project</div>
-        </td>
+        <td><div class="pf-name">MoviZone</div><div class="pf-sub">Movie Catalog App — CCIT Project</div></td>
         <td class="hide-mobile"><span class="pf-cat">App</span></td>
         <td class="hide-mobile"><span class="pf-stack">Flutter · TMDB API · PHP · MySQL</span></td>
         <td class="hide-mobile"><span class="pf-year">2026</span></td>
@@ -852,10 +456,7 @@ footer p{
       </tr>
       <tr class="pf-row reveal" data-category="web" style="transition-delay:0.08s">
         <td><span class="pf-num">03</span></td>
-        <td>
-          <div class="pf-name">MONO</div>
-          <div class="pf-sub">Fashion E-Commerce Website — CCIT Project</div>
-        </td>
+        <td><div class="pf-name">MONO</div><div class="pf-sub">Fashion E-Commerce Website — CCIT Project</div></td>
         <td class="hide-mobile"><span class="pf-cat">Web</span></td>
         <td class="hide-mobile"><span class="pf-stack">CodeIgniter 4 · PHP · MySQL · MVC</span></td>
         <td class="hide-mobile"><span class="pf-year">2026</span></td>
@@ -863,10 +464,7 @@ footer p{
       </tr>
       <tr class="pf-row reveal" data-category="web" style="transition-delay:0.11s">
         <td><span class="pf-num">04</span></td>
-        <td>
-          <div class="pf-name">STYLEZONE</div>
-          <div class="pf-sub">Fashion E-Commerce Website — CCIT Project</div>
-        </td>
+        <td><div class="pf-name">STYLEZONE</div><div class="pf-sub">Fashion E-Commerce Website — CCIT Project</div></td>
         <td class="hide-mobile"><span class="pf-cat">Web</span></td>
         <td class="hide-mobile"><span class="pf-stack">PHP · MySQL · CRUD</span></td>
         <td class="hide-mobile"><span class="pf-year">2025</span></td>
@@ -874,10 +472,7 @@ footer p{
       </tr>
       <tr class="pf-row reveal" data-category="design" style="transition-delay:0.14s">
         <td><span class="pf-num">05</span></td>
-        <td>
-          <div class="pf-name">Bite&amp;Brew</div>
-          <div class="pf-sub">Recipe App UI/UX Design — CCIT Project</div>
-        </td>
+        <td><div class="pf-name">Bite&amp;Brew</div><div class="pf-sub">Recipe App UI/UX Design — CCIT Project</div></td>
         <td class="hide-mobile"><span class="pf-cat">UI/UX</span></td>
         <td class="hide-mobile"><span class="pf-stack">Figma · Wireframe · Prototype · High-Fidelity</span></td>
         <td class="hide-mobile"><span class="pf-year">2025</span></td>
@@ -885,10 +480,7 @@ footer p{
       </tr>
       <tr class="pf-row reveal" data-category="internship" style="transition-delay:0.17s">
         <td><span class="pf-num">06</span></td>
-        <td>
-          <div class="pf-name">PT NexWave</div>
-          <div class="pf-sub">Mobile Developer Internship</div>
-        </td>
+        <td><div class="pf-name">PT NexWave</div><div class="pf-sub">Mobile Developer Internship</div></td>
         <td class="hide-mobile"><span class="pf-cat">Internship</span></td>
         <td class="hide-mobile"><span class="pf-stack">Flutter · REST API · Cross-platform</span></td>
         <td class="hide-mobile"><span class="pf-year">2023–24</span></td>
@@ -898,62 +490,29 @@ footer p{
   </table>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT — info only, no form -->
 <section id="contact">
   <div class="section-header reveal">
     <span class="section-index">04 / 04</span>
     <span class="section-title">Contact</span>
   </div>
-  <div class="contact-layout">
-    <div class="contact-left reveal-l">
-      <h2 class="contact-big">Let's<br>build<br>something<br><em>great.</em></h2>
-      <div class="contact-info">
-        <div class="ci-row">
-          <span class="ci-label">Location</span>
-          <span class="ci-val">Cikarang Barat, Bekasi</span>
-        </div>
-        <div class="ci-row">
-          <span class="ci-label">Phone</span>
-          <span class="ci-val"><a href="tel:+62895360324416">+62 895 3603 24416</a></span>
-        </div>
-        <div class="ci-row">
-          <span class="ci-label">Email</span>
-          <span class="ci-val"><a href="mailto:almerio.tsany@gmail.com">almerio.tsany@gmail.com</a></span>
-        </div>
+  <div class="contact-layout reveal-l">
+    <h2 class="contact-big">Let's<br>build<br>something<br><em>great.</em></h2>
+    <div class="contact-info">
+      <div class="ci-row">
+        <span class="ci-label">Location</span>
+        <span class="ci-val">Bekasi, Indonesia</span>
       </div>
-      <div class="contact-socials">
-        <a href="https://github.com/almeriotsaa" class="soc" target="_blank">GitHub</a>
-        <a href="https://linkedin.com/in/almerio-tsany-fauzan-setiawan-8400a621a/" class="soc" target="_blank">LinkedIn</a>
-        <a href="https://instagram.com/almeriotsaa_" class="soc" target="_blank">Instagram</a>
-        <a href="mailto:almerio.tsany@gmail.com" class="soc">Email</a>
+      <div class="ci-row">
+        <span class="ci-label">Email</span>
+        <span class="ci-val"><a href="mailto:almerio.tsany@gmail.com">almerio.tsany@gmail.com</a></span>
       </div>
     </div>
-    <div class="contact-divider"></div>
-    <div class="contact-right reveal">
-      <form class="cf" action="forms/contact.php" method="post">
-        <div class="cf-row">
-          <div class="fg">
-            <label>Name</label>
-            <input type="text" name="name" placeholder="Your name" required>
-          </div>
-          <div class="fg">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="example@gmail.com" required>
-          </div>
-        </div>
-        <div class="fg">
-          <label>Subject</label>
-          <input type="text" name="subject" placeholder="What's it about?" required>
-        </div>
-        <div class="fg">
-          <label>Message</label>
-          <textarea name="message" placeholder="Tell me about your project..." required></textarea>
-        </div>
-        <button type="submit" class="cf-btn">
-          Send message
-          <span style="display:inline-block;width:12px;height:12px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;transform:rotate(45deg)"></span>
-        </button>
-      </form>
+    <div class="contact-socials">
+      <a href="https://github.com/almeriotsaa" class="soc" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/almerio-tsany-fauzan-setiawan-8400a621a/" class="soc" target="_blank">LinkedIn</a>
+      <a href="https://instagram.com/almeriotsaa_" class="soc" target="_blank">Instagram</a>
+      <a href="mailto:almerio.tsany@gmail.com" class="soc">Email</a>
     </div>
   </div>
 </section>
@@ -964,7 +523,6 @@ footer p{
   <p>Jakarta, Indonesia</p>
 </footer>
 
-<!-- PROJECT DETAIL PANEL -->
 <div id="pf-overlay"></div>
 <aside id="pf-panel" role="dialog" aria-modal="true" aria-label="Project detail">
   <div class="pf-panel-head">
@@ -988,12 +546,10 @@ footer p{
 </aside>
 
 <script>
-/* HERO LINE */
 window.addEventListener('load',()=>{
   document.getElementById('hero-divider').classList.add('loaded');
 });
 
-/* SCROLL REVEAL */
 const obs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -1005,7 +561,6 @@ const obs=new IntersectionObserver(entries=>{
 },{threshold:0.1});
 document.querySelectorAll('.reveal,.reveal-l,.count-up').forEach(el=>obs.observe(el));
 
-/* COUNT UP */
 function countUp(el){
   const target=+el.dataset.target;
   let cur=0;const step=target/36;
@@ -1015,7 +570,6 @@ function countUp(el){
   },40);
 }
 
-/* PORTFOLIO FILTER */
 document.querySelectorAll('.pf-filter').forEach(f=>{
   f.addEventListener('click',()=>{
     document.querySelectorAll('.pf-filter').forEach(x=>x.classList.remove('active'));
@@ -1027,7 +581,6 @@ document.querySelectorAll('.pf-filter').forEach(f=>{
   });
 });
 
-/* NAV SCROLL HIGHLIGHT */
 const secs=document.querySelectorAll('section[id]');
 const nls=document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll',()=>{
@@ -1039,143 +592,15 @@ window.addEventListener('scroll',()=>{
   });
 },{passive:true});
 
-/* ── PROJECT DATA ── */
 const PROJECTS=[
-  {
-    id:'01',
-    name:'Circlo',
-    subtitle:'Social Community App — Personal Project',
-    category:'App',
-    type:'Personal Project',
-    year:'Apr 2026 – Present',
-    role:'Full Stack Developer',
-    status:'In Progress',
-    stack:['Flutter','Dart','REST API','UI/UX Design','Community Features'],
-    overview:'A community-based social application built with Flutter, designed to connect users through shared interests and real-time interaction. Built as a personal project to deepen expertise in scalable mobile architecture.',
-    highlights:[
-      'Developed a community-based social app using Flutter with real-time user interaction features.',
-      'Built core functionalities including post creation, engagement system (likes/comments), and community groups.',
-      'Designed intuitive UI/UX to enhance user engagement and usability.',
-      'Implemented scalable architecture to support growing user communities.'
-    ],
-    photos:[
-      {src:'./img/circlo.png', caption:'Mobile App'},
-    ]
-  },
-  {
-    id:'02',
-    name:'MoviZone',
-    subtitle:'Movie Catalog App — CCIT Project',
-    category:'App',
-    type:'CCIT Project',
-    year:'Mar – Apr 2026',
-    role:'Full Stack Developer',
-    status:'Completed',
-    stack:['Flutter','Dart','TMDB API','PHP','MySQL','REST API'],
-    overview:'A movie catalog mobile application with real-time data integration from The Movie Database (TMDB) API. Delivers a smooth browsing experience with live data, search, and detailed movie pages across iOS and Android.',
-    highlights:[
-      'Developed a movie catalog mobile app using Flutter with real-time data integration from TMDB API.',
-      'Built core features including movie listing, detail pages, and search functionality.',
-      'Optimized API handling and app performance for smooth user experience.',
-      'Implemented efficient state management for responsive, fluid UI interactions.'
-    ],
-    photos:[
-      {src:'./img/movizone1.png', caption:'Movie Home'},
-      {src:'./img/movizone2.png', caption:'Movie Explore'},
-      {src:'./img/movizone3.png', caption:'Movie Detail'},
-    ]
-  },
-  {
-    id:'03',
-    name:'MONO',
-    subtitle:'Fashion E-Commerce Website — CCIT Project',
-    category:'Web',
-    type:'CCIT Project',
-    year:'Feb – Mar 2026',
-    role:'Full Stack Developer',
-    status:'Completed',
-    stack:['CodeIgniter 4','PHP','MySQL','MVC Architecture','Bootstrap','CRUD'],
-    overview:'A full-featured fashion e-commerce website built on CodeIgniter 4 with MVC architecture. Covers the complete shopping lifecycle — product discovery, catalog management, and database-driven performance.',
-    highlights:[
-      'Developed a fashion e-commerce website using CodeIgniter 4, PHP, and MySQL with MVC architecture.',
-      'Built dynamic product management system with full CRUD functionality.',
-      'Designed responsive UI and optimized database queries for better performance.',
-      'Implemented structured navigation and product catalog with category filtering.'
-    ],
-    photos:[
-      {src:'./img/mono1.png', caption:'Homepage'},
-      {src:'./img/mono2.png', caption:'Product Catalog'},
-      {src:'./img/mono3.png', caption:'Product Detail'},
-    ]
-  },
-  {
-    id:'04',
-    name:'STYLEZONE',
-    subtitle:'Fashion E-Commerce Website — CCIT Project',
-    category:'Web',
-    type:'CCIT Project',
-    year:'Oct 2025',
-    role:'Full Stack Developer',
-    status:'Completed',
-    stack:['PHP','MySQL','HTML','CSS','CRUD','Product Catalog'],
-    overview:'A dynamic fashion website focused on efficient product data management and a clean shopping experience. Built from the ground up with vanilla PHP and MySQL, demonstrating core web development principles.',
-    highlights:[
-      'Developed a dynamic fashion website using PHP and MySQL, enabling efficient product data management.',
-      'Built core e-commerce features including product catalog and detail pages with structured navigation.',
-      'Implemented CRUD functionality to support scalable product management.',
-      'Delivered responsive, mobile-friendly layout with clean UI structure.'
-    ],
-    photos:[
-      {src:'./img/stylezone1.png', caption:'Homepage'},
-      {src:'./img/stylezone2.png', caption:'Product Detail'},
-      {src:'./img/stylezone3.png', caption:'Product Catalog'},
-    ]
-  },
-  {
-    id:'05',
-    name:'Bite&Brew',
-    subtitle:'Recipe App — UI/UX Design Project',
-    category:'UI/UX',
-    type:'CCIT Project',
-    year:'Sep 2025',
-    role:'UI/UX Designer',
-    status:'Completed',
-    stack:['Figma','Wireframing','Prototyping','High-Fidelity Mockup','User Research','Design Systems'],
-    overview:'An end-to-end UI/UX design project for a recipe application. The process spanned research, wireframing, and high-fidelity prototyping — translating real user needs into an intuitive, visually clean interface.',
-    highlights:[
-      'Designed an intuitive recipe app interface, improving user experience through clean navigation and structured layouts.',
-      'Translated user needs into interactive prototypes by applying modern UI/UX design principles.',
-      'Created end-to-end design flow from wireframe to high-fidelity mockup in Figma.',
-      'Applied design systems thinking to ensure consistency across all interface components.'
-    ],
-    photos:[
-      {src:'./img/HCI_Bite&Brew.png', caption:'App Design'},
-    ]
-  },
-  {
-    id:'06',
-    name:'PT NexWave',
-    subtitle:'Mobile Developer Internship',
-    category:'Internship',
-    type:'Professional Experience',
-    year:'Sep 2023 – Jun 2024',
-    role:'Mobile Developer Intern',
-    status:'Completed',
-    stack:['Flutter','Dart','REST API','Git','GitHub','Agile'],
-    overview:'A 10-month professional internship at PT NexWave, contributing to production-grade mobile application development. Worked cross-functionally alongside senior developers to deliver scalable, high-performance features.',
-    highlights:[
-      'Delivered scalable mobile features using Flutter, improving app usability and responsiveness across devices.',
-      'Integrated backend services via REST APIs, ensuring efficient data flow and real-time updates.',
-      'Collaborated cross-functionally to deliver features aligned with business requirements.',
-      'Gained hands-on experience with production deployment workflows and code review processes.'
-    ],
-    photos:[
-      {src:'./img/internship.jpg', caption:'Internship as Mobile Developer'},
-    ]
-  }
+  {id:'01',name:'Circlo',subtitle:'Social Community App — Personal Project',category:'App',type:'Personal Project',year:'Apr 2026 – Present',role:'Full Stack Developer',status:'In Progress',stack:['Flutter','Dart','REST API','UI/UX Design','Community Features'],overview:'A community-based social application built with Flutter, designed to connect users through shared interests and real-time interaction. Built as a personal project to deepen expertise in scalable mobile architecture.',highlights:['Developed a community-based social app using Flutter with real-time user interaction features.','Built core functionalities including post creation, engagement system (likes/comments), and community groups.','Designed intuitive UI/UX to enhance user engagement and usability.','Implemented scalable architecture to support growing user communities.'],photos:[{src:'./img/circlo.png',caption:'Mobile App'}]},
+  {id:'02',name:'MoviZone',subtitle:'Movie Catalog App — CCIT Project',category:'App',type:'CCIT Project',year:'Mar – Apr 2026',role:'Full Stack Developer',status:'Completed',stack:['Flutter','Dart','TMDB API','PHP','MySQL','REST API'],overview:'A movie catalog mobile application with real-time data integration from The Movie Database (TMDB) API. Delivers a smooth browsing experience with live data, search, and detailed movie pages across iOS and Android.',highlights:['Developed a movie catalog mobile app using Flutter with real-time data integration from TMDB API.','Built core features including movie listing, detail pages, and search functionality.','Optimized API handling and app performance for smooth user experience.','Implemented efficient state management for responsive, fluid UI interactions.'],photos:[{src:'./img/movizone1.png',caption:'Movie Home'},{src:'./img/movizone2.png',caption:'Movie Explore'},{src:'./img/movizone3.png',caption:'Movie Detail'}]},
+  {id:'03',name:'MONO',subtitle:'Fashion E-Commerce Website — CCIT Project',category:'Web',type:'CCIT Project',year:'Feb – Mar 2026',role:'Full Stack Developer',status:'Completed',stack:['CodeIgniter 4','PHP','MySQL','MVC Architecture','Bootstrap','CRUD'],overview:'A full-featured fashion e-commerce website built on CodeIgniter 4 with MVC architecture. Covers the complete shopping lifecycle — product discovery, catalog management, and database-driven performance.',highlights:['Developed a fashion e-commerce website using CodeIgniter 4, PHP, and MySQL with MVC architecture.','Built dynamic product management system with full CRUD functionality.','Designed responsive UI and optimized database queries for better performance.','Implemented structured navigation and product catalog with category filtering.'],photos:[{src:'./img/mono1.png',caption:'Homepage'},{src:'./img/mono2.png',caption:'Product Catalog'},{src:'./img/mono3.png',caption:'Product Detail'}]},
+  {id:'04',name:'STYLEZONE',subtitle:'Fashion E-Commerce Website — CCIT Project',category:'Web',type:'CCIT Project',year:'Oct 2025',role:'Full Stack Developer',status:'Completed',stack:['PHP','MySQL','HTML','CSS','CRUD','Product Catalog'],overview:'A dynamic fashion website focused on efficient product data management and a clean shopping experience. Built from the ground up with vanilla PHP and MySQL, demonstrating core web development principles.',highlights:['Developed a dynamic fashion website using PHP and MySQL, enabling efficient product data management.','Built core e-commerce features including product catalog and detail pages with structured navigation.','Implemented CRUD functionality to support scalable product management.','Delivered responsive, mobile-friendly layout with clean UI structure.'],photos:[{src:'./img/stylezone1.png',caption:'Homepage'},{src:'./img/stylezone2.png',caption:'Product Detail'},{src:'./img/stylezone3.png',caption:'Product Catalog'}]},
+  {id:'05',name:'Bite&Brew',subtitle:'Recipe App — UI/UX Design Project',category:'UI/UX',type:'CCIT Project',year:'Sep 2025',role:'UI/UX Designer',status:'Completed',stack:['Figma','Wireframing','Prototyping','High-Fidelity Mockup','User Research','Design Systems'],overview:'An end-to-end UI/UX design project for a recipe application. The process spanned research, wireframing, and high-fidelity prototyping — translating real user needs into an intuitive, visually clean interface.',highlights:['Designed an intuitive recipe app interface, improving user experience through clean navigation and structured layouts.','Translated user needs into interactive prototypes by applying modern UI/UX design principles.','Created end-to-end design flow from wireframe to high-fidelity mockup in Figma.','Applied design systems thinking to ensure consistency across all interface components.'],photos:[{src:'./img/HCI_Bite&Brew.png',caption:'App Design'}]},
+  {id:'06',name:'PT NexWave',subtitle:'Mobile Developer Internship',category:'Internship',type:'Professional Experience',year:'Sep 2023 – Jun 2024',role:'Mobile Developer Intern',status:'Completed',stack:['Flutter','Dart','REST API','Git','GitHub','Agile'],overview:'A 10-month professional internship at PT NexWave, contributing to production-grade mobile application development. Worked cross-functionally alongside senior developers to deliver scalable, high-performance features.',highlights:['Delivered scalable mobile features using Flutter, improving app usability and responsiveness across devices.','Integrated backend services via REST APIs, ensuring efficient data flow and real-time updates.','Collaborated cross-functionally to deliver features aligned with business requirements.','Gained hands-on experience with production deployment workflows and code review processes.'],photos:[{src:'./img/internship.jpg',caption:'Internship as Mobile Developer'}]}
 ];
 
-/* ── PANEL LOGIC ── */
 const overlay=document.getElementById('pf-overlay');
 const panel=document.getElementById('pf-panel');
 const pdBody=document.getElementById('pd-body');
@@ -1187,159 +612,43 @@ const btnNext=document.getElementById('pd-next');
 let currentIdx=-1;
 let currentPhotoIdx=0;
 
-function openPanel(idx){
-  currentIdx=idx;
-  currentPhotoIdx=0;
-  renderPanel(PROJECTS[idx]);
-  overlay.classList.add('open');
-  panel.classList.add('open');
-  document.body.style.overflow='hidden';
-  panel.focus();
+function openPanel(idx){currentIdx=idx;currentPhotoIdx=0;renderPanel(PROJECTS[idx]);overlay.classList.add('open');panel.classList.add('open');document.body.style.overflow='hidden';panel.focus();}
+function closePanel(){overlay.classList.remove('open');panel.classList.remove('open');document.body.style.overflow='';currentIdx=-1;}
+
+function buildGallery(photos,projectName){
+  if(!photos||photos.length===0)return '';
+  const thumbsHtml=photos.length>1?`<div class="pd-gallery-thumbs">${photos.map((ph,i)=>`<div class="pd-thumb${i===0?' active':''}" data-photo-idx="${i}"><img src="${ph.src}" alt="${ph.caption}" onerror="this.parentNode.style.background='var(--paper2)';this.style.display='none'"></div>`).join('')}</div>`:'';
+  return `<div class="pd-gallery"><div class="pd-gallery-main" id="pd-main-img-wrap"><img id="pd-main-img" src="${photos[0].src}" alt="${photos[0].caption}" onerror="this.style.display='none';document.getElementById('pd-main-fallback').style.display='flex'"><div class="pd-placeholder-wrap" id="pd-main-fallback" style="display:none;position:absolute;inset:0"><span class="pd-placeholder-letter">${projectName.slice(0,2).toUpperCase()}</span><span class="pd-placeholder-hint">Add photo to ./img/projects/</span></div></div>${thumbsHtml}<div class="pd-gallery-caption"><span class="pd-gallery-label" id="pd-photo-caption">${photos[0].caption}</span><span class="pd-gallery-count" id="pd-photo-count">1 / ${photos.length}</span></div></div>`;
 }
 
-function closePanel(){
-  overlay.classList.remove('open');
-  panel.classList.remove('open');
-  document.body.style.overflow='';
-  currentIdx=-1;
-}
-
-function buildGallery(photos, projectName){
-  if(!photos||photos.length===0) return '';
-
-  const thumbsHtml = photos.length > 1 ? `
-    <div class="pd-gallery-thumbs">
-      ${photos.map((ph,i)=>`
-        <div class="pd-thumb${i===0?' active':''}" data-photo-idx="${i}">
-          <img src="${ph.src}" alt="${ph.caption}"
-            onerror="this.parentNode.style.background='var(--paper2)';this.style.display='none'">
-        </div>
-      `).join('')}
-    </div>` : '';
-
-  return `
-    <div class="pd-gallery">
-      <div class="pd-gallery-main" id="pd-main-img-wrap">
-        <img id="pd-main-img" src="${photos[0].src}" alt="${photos[0].caption}"
-          onerror="this.style.display='none';document.getElementById('pd-main-fallback').style.display='flex'">
-        <div class="pd-placeholder-wrap" id="pd-main-fallback" style="display:none;position:absolute;inset:0">
-          <span class="pd-placeholder-letter">${projectName.slice(0,2).toUpperCase()}</span>
-          <span class="pd-placeholder-hint">Add photo to ./img/projects/</span>
-        </div>
-      </div>
-      ${thumbsHtml}
-      <div class="pd-gallery-caption">
-        <span class="pd-gallery-label" id="pd-photo-caption">${photos[0].caption}</span>
-        <span class="pd-gallery-count" id="pd-photo-count">1 / ${photos.length}</span>
-      </div>
-    </div>`;
-}
-
-function switchPhoto(idx, photos){
+function switchPhoto(idx,photos){
   currentPhotoIdx=idx;
   const mainImg=document.getElementById('pd-main-img');
   const fallback=document.getElementById('pd-main-fallback');
   const caption=document.getElementById('pd-photo-caption');
   const count=document.getElementById('pd-photo-count');
-  if(!mainImg) return;
-
-  // Fade transition
-  mainImg.style.opacity='0';
-  mainImg.style.transition='opacity 0.2s ease';
-  setTimeout(()=>{
-    mainImg.src=photos[idx].src;
-    mainImg.style.display='block';
-    if(fallback) fallback.style.display='none';
-    mainImg.onload=()=>{mainImg.style.opacity='1'};
-    mainImg.onerror=()=>{
-      mainImg.style.display='none';
-      if(fallback) fallback.style.display='flex';
-    };
-  },150);
-
-  if(caption) caption.textContent=photos[idx].caption;
-  if(count) count.textContent=`${idx+1} / ${photos.length}`;
-
-  // Update thumb active state
-  document.querySelectorAll('.pd-thumb').forEach((t,i)=>{
-    t.classList.toggle('active', i===idx);
-  });
+  if(!mainImg)return;
+  mainImg.style.opacity='0';mainImg.style.transition='opacity 0.2s ease';
+  setTimeout(()=>{mainImg.src=photos[idx].src;mainImg.style.display='block';if(fallback)fallback.style.display='none';mainImg.onload=()=>{mainImg.style.opacity='1'};mainImg.onerror=()=>{mainImg.style.display='none';if(fallback)fallback.style.display='flex'};},150);
+  if(caption)caption.textContent=photos[idx].caption;
+  if(count)count.textContent=`${idx+1} / ${photos.length}`;
+  document.querySelectorAll('.pd-thumb').forEach((t,i)=>{t.classList.toggle('active',i===idx)});
 }
 
 function renderPanel(p){
-  const total=PROJECTS.length;
-  const i=currentIdx;
+  const total=PROJECTS.length;const i=currentIdx;
   pdIndex.textContent=`Project ${p.id} / 0${total}`;
   pdNavLabel.textContent=`${i+1} of ${total}`;
-  btnPrev.disabled=i===0;
-  btnNext.disabled=i===total-1;
-
-  const prevName=i>0?PROJECTS[i-1].name:'';
-  const nextName=i<total-1?PROJECTS[i+1].name:'';
-  btnPrev.setAttribute('aria-label', prevName?`Previous: ${prevName}`:'Previous');
-  btnNext.setAttribute('aria-label', nextName?`Next: ${nextName}`:'Next');
-
+  btnPrev.disabled=i===0;btnNext.disabled=i===total-1;
+  const prevName=i>0?PROJECTS[i-1].name:'';const nextName=i<total-1?PROJECTS[i+1].name:'';
+  btnPrev.setAttribute('aria-label',prevName?`Previous: ${prevName}`:'Previous');
+  btnNext.setAttribute('aria-label',nextName?`Next: ${nextName}`:'Next');
   const statusColor=p.status==='In Progress'?'red':'';
-
-  pdBody.innerHTML=`
-    <div class="pd-cat-row">
-      <span class="pd-badge">${p.category}</span>
-      <span class="pd-badge ${statusColor}">${p.status}</span>
-      <span class="pd-year-tag">${p.year}</span>
-    </div>
-    <h2 class="pd-title">${p.name}</h2>
-    <p class="pd-subtitle">${p.subtitle}</p>
-
-    ${buildGallery(p.photos, p.name)}
-
-    <div class="pd-meta-grid">
-      <div class="pd-meta-item">
-        <p class="pd-meta-label">Role</p>
-        <p class="pd-meta-val">${p.role}</p>
-      </div>
-      <div class="pd-meta-item">
-        <p class="pd-meta-label">Type</p>
-        <p class="pd-meta-val">${p.type}</p>
-      </div>
-      <div class="pd-meta-item">
-        <p class="pd-meta-label">Duration</p>
-        <p class="pd-meta-val">${p.year}</p>
-      </div>
-      <div class="pd-meta-item">
-        <p class="pd-meta-label">Status</p>
-        <p class="pd-meta-val">${p.status}</p>
-      </div>
-    </div>
-
-    <div class="pd-divider"></div>
-
-    <p class="pd-section-label">Overview</p>
-    <p class="pd-desc">${p.overview}</p>
-
-    <p class="pd-section-label">Key contributions</p>
-    <ul class="pd-points">
-      ${p.highlights.map(h=>`<li>${h}</li>`).join('')}
-    </ul>
-
-    <div class="pd-divider"></div>
-
-    <p class="pd-section-label">Tech stack</p>
-    <div class="pd-stack-wrap">
-      ${p.stack.map(s=>`<span class="pd-stack-pill">${s}</span>`).join('')}
-    </div>
-  `;
+  pdBody.innerHTML=`<div class="pd-cat-row"><span class="pd-badge">${p.category}</span><span class="pd-badge ${statusColor}">${p.status}</span><span class="pd-year-tag">${p.year}</span></div><h2 class="pd-title">${p.name}</h2><p class="pd-subtitle">${p.subtitle}</p>${buildGallery(p.photos,p.name)}<div class="pd-meta-grid"><div class="pd-meta-item"><p class="pd-meta-label">Role</p><p class="pd-meta-val">${p.role}</p></div><div class="pd-meta-item"><p class="pd-meta-label">Type</p><p class="pd-meta-val">${p.type}</p></div><div class="pd-meta-item"><p class="pd-meta-label">Duration</p><p class="pd-meta-val">${p.year}</p></div><div class="pd-meta-item"><p class="pd-meta-label">Status</p><p class="pd-meta-val">${p.status}</p></div></div><div class="pd-divider"></div><p class="pd-section-label">Overview</p><p class="pd-desc">${p.overview}</p><p class="pd-section-label">Key contributions</p><ul class="pd-points">${p.highlights.map(h=>`<li>${h}</li>`).join('')}</ul><div class="pd-divider"></div><p class="pd-section-label">Tech stack</p><div class="pd-stack-wrap">${p.stack.map(s=>`<span class="pd-stack-pill">${s}</span>`).join('')}</div>`;
   pdBody.scrollTop=0;
-
-  // Attach thumb click events after render
-  document.querySelectorAll('.pd-thumb').forEach((thumb)=>{
-    thumb.addEventListener('click',()=>{
-      const photoIdx=parseInt(thumb.dataset.photoIdx);
-      switchPhoto(photoIdx, p.photos);
-    });
-  });
+  document.querySelectorAll('.pd-thumb').forEach(thumb=>{thumb.addEventListener('click',()=>{switchPhoto(parseInt(thumb.dataset.photoIdx),p.photos)})});
 }
 
-/* Attach row click */
 document.querySelectorAll('.pf-row').forEach((row,i)=>{
   row.addEventListener('click',()=>openPanel(i));
   row.setAttribute('tabindex','0');
@@ -1350,7 +659,6 @@ btnClose.addEventListener('click',closePanel);
 overlay.addEventListener('click',closePanel);
 btnPrev.addEventListener('click',()=>{if(currentIdx>0)openPanel(currentIdx-1)});
 btnNext.addEventListener('click',()=>{if(currentIdx<PROJECTS.length-1)openPanel(currentIdx+1)});
-
 document.addEventListener('keydown',e=>{
   if(!panel.classList.contains('open'))return;
   if(e.key==='Escape')closePanel();
